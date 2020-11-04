@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 // components
 import Navbar from "components/Navbars/AuthNavbar.js";
+import ListaNecessidade from "components/Necessidades/listaNecessidade.js"
 
 export default function Landing() {
   return (
@@ -56,42 +56,8 @@ export default function Landing() {
             </svg>
           </div>
         </div>
-
-        <section className="pb-20 bg-gray-300 -mt-24">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap">
-              <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                  <div className="px-4 py-5 flex-auto">
-                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                      <i className="fas fa-award"></i>
-                    </div>
-                    <h6 className="text-xl font-semibold">Awarded Agency</h6>
-                    <p className="mt-2 mb-4 text-gray-600">
-                      Descrição da necessidade, quando o usuário clicar em "Entrar em Contato"
-                      será redirecionado para outra página com todos os dados da necessidade"
-                    </p>
-
-                    <div className="sm:block flex flex-col mt-10">
-
-                    <Link
-                      href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index"
-                      target="_blank"
-                      className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                    >
-                      Entrar em Contato
-                    </Link>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>              
-            </div>
-          </div>
-        </section>
       </main>
-      {/*<Footer />*/}
+      <ListaNecessidade/>
     </>
   );
 }
