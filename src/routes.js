@@ -12,6 +12,8 @@ import Auth from "layouts/Auth.js";
 import Profile from "views/Profile.js";
 import Index from "views/Landing.js";
 
+import Doacao from "./components/Doacao/Doacao"
+
 export default function Routes(){
   return(
   <BrowserRouter>
@@ -24,6 +26,8 @@ export default function Routes(){
       {/*<Route path="/landing" exact component={Landing} />*/}
       <Route path="/" exact component={Index} />
       <Route path="/profile" exact component={Profile} />
+      
+      <Route path="/doacao" exact component={Doacao} />
       
 
       {/* add routes with layouts */}

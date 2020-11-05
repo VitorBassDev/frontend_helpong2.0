@@ -52,8 +52,7 @@ function Necessidades() {
                         <div className="sm:block flex flex-col mt-10">
                           <button>
                             <Link
-                              to=""
-                              target="_blank"
+                              to="doacao"
                               className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                             >
                               Entrar em Contato
