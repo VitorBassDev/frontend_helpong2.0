@@ -2,10 +2,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// components
-
-import PagesDropdown from "components/Dropdowns/PagesDropdown.js";
-
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const ongName = localStorage.getItem('ongNome')
@@ -23,7 +19,7 @@ export default function Navbar(props) {
 
             <Link 
             to="admin">
-              <span className="text-white">{ongName}</span>
+              <span className="text-white uppercase">{ongName}</span>
               
             </Link>
 
@@ -48,7 +44,7 @@ export default function Navbar(props) {
               <li className="flex items-center">
               
                 <button
-                  className="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                  className="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-100"
                   type="button"
                 >
                   <Link
@@ -57,8 +53,11 @@ export default function Navbar(props) {
                   </Link>
                 </button>
 
-                <button
-                  className="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+              </li>
+
+              <li>
+               <button
+                  className="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-100"
                   type="button"
                 >
                   <Link
@@ -67,6 +66,7 @@ export default function Navbar(props) {
                   </Link>
                 </button>       
               </li>
+              
             </ul>
           </div>
         </div>

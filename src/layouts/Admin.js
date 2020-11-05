@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import {FiPower} from 'react-icons/fa';
 
 // components
 
@@ -15,6 +14,7 @@ import Dashboard from "views/admin/Dashboard.js";
 import Maps from "views/admin/Maps.js";
 import Settings from "views/admin/Settings.js";
 import Tables from "views/admin/TablesNecessidade.js";
+import Necessidade from "views/admin/RegistraNecessidade.js";
 
 export default function Admin() {
   return (
@@ -23,13 +23,15 @@ export default function Admin() {
       <div className="relative md:ml-64 bg-gray-200">
         <AdminNavbar />
         {/* Header */}
-        
+
+        <HeaderStats />
         <div className="px-4 md:px-10 mx-auto w-full -m-24 mt-20">
           <Switch>
             <Route path="/admin/dashboard" exact component={Dashboard} />
             <Route path="/admin/maps" exact component={Maps} />
             <Route path="/admin/settings" exact component={Settings} />
             <Route path="/admin/tables" exact component={Tables} />
+            <Route path="/admin/necessidade" exact component={Necessidade} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
           <FooterAdmin />

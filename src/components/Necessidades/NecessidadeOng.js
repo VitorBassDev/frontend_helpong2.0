@@ -1,11 +1,10 @@
 import React, { useState, useEffect} from 'react';
-import {useHistory, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import api from '../../services/api';
 
 import PropTypes from "prop-types";
 
 function NecessidadesOng({ color }) {
-  const history = useHistory();
 		
   const [necessidade, setNecessidade] = useState([]);
 
@@ -51,11 +50,11 @@ function NecessidadesOng({ color }) {
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
             <h3
               className={
-                "font-semibold text-lg " +
+                "font-semibold text-lg  uppercase" +
                 (color === "light" ? "text-gray-800" : "text-white")
               }
             >
-              Suas Necessidades ainda não atendidas
+              Necessidades não atendidas
             </h3>
           </div>
         </div>

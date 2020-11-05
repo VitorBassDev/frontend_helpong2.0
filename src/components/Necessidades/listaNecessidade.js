@@ -24,7 +24,7 @@ function Necessidades() {
 			{necessidade.map(incident =>(
 				<li 
 					key={incident.id_necessidade}>
-          <section className="pb-20 bg-gray-300 -mt-24"> 
+          <section className="pb-20 bg-gray-300 -mt-10"> 
             <div className="container mx-auto px-4">
               <div className="flex flex-wrap">
                 <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">

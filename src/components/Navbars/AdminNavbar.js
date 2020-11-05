@@ -10,13 +10,13 @@ export default function Navbar() {
       <nav className="absolute top-0  w-full z-10 bg-transparent md:flex-row md:flex-no-wrap md:justify-start flex items-center pt-4">
         <div className="w-full mx-autp items-center flex justify-between md:flex-no-wrap flex-wrap md:px-10 px-4">
           {/* Brand */}
-          <span className="text-white text-lg hidden lg:inline-block font-semibold">
-            Bem Vindo(a) 
+          <span className="text-white text-lg hidden lg:inline-block font-semibold uppercase">
+            Bem Vindo
           </span>
             
-            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+            <div className="w-full lg:w-6/12 px-4 mt-5 ml-auto mr-auto text-center">
               <div className="pr-12">
-                <h1 className="text-white font-semibold text-5xl">
+                <h1 className="text-white font-semibold text-4xl uppercase">
                   {ongName}
                 </h1>
               </div>

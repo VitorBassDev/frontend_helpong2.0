@@ -1,65 +1,42 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // components
-
-import CardStats from "components/Cards/CardStats.js";
 
 export default function HeaderStats() {
   return (
     <>
       {/* Header */}
-      <div className="relative bg-blue-600 md:pt-32 pb-32 pt-12">
+      <div className="relative bg-blue-600 md: pt-32 pb-10 pt-12">
         <div className="px-4 md:px-10 mx-auto w-full">
           <div>
             {/* Card stats */}
             <div className="flex flex-wrap">
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="TRAFFIC"
-                  statTitle="350,897"
-                  statArrow="up"
-                  statPercent="3.48"
-                  statPercentColor="text-green-500"
-                  statDescripiron="Since last month"
-                  statIconName="far fa-chart-bar"
-                  statIconColor="bg-red-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="NEW USERS"
-                  statTitle="2,356"
-                  statArrow="down"
-                  statPercent="3.48"
-                  statPercentColor="text-red-500"
-                  statDescripiron="Since last week"
-                  statIconName="fas fa-chart-pie"
-                  statIconColor="bg-orange-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="SALES"
-                  statTitle="924"
-                  statArrow="down"
-                  statPercent="1.10"
-                  statPercentColor="text-orange-500"
-                  statDescripiron="Since yesterday"
-                  statIconName="fas fa-users"
-                  statIconColor="bg-pink-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="PERFORMANCE"
-                  statTitle="49,65%"
-                  statArrow="up"
-                  statPercent="12"
-                  statPercentColor="text-green-500"
-                  statDescripiron="Since last month"
-                  statIconName="fas fa-percent"
-                  statIconColor="bg-blue-500"
-                />
+
+            <div className="container mx-auto">
+              <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg  relative z-10">
+                <div className="w-full text-center lg:w-8/12">
+                  <p className="text-4xl text-center">
+                    <span role="img" aria-label="love">
+                      😍
+                    </span>
+                  </p>
+                  <h3 className="font-semibold text-3xl">
+                  Informe uma nova Necessidade
+                  </h3>
+                
+                  <div className="sm:block flex flex-col mt-10">
+                    <Link
+                      to="/admin/necessidade"
+                      className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                    >
+                      Cadastrar
+                    </Link>
+  
+                    </div>
+                    <div className="text-center mt-16"></div>
+                </div>
+                </div>
               </div>
             </div>
           </div>
