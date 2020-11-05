@@ -45,6 +45,10 @@ function Necessidades() {
                         {incident.quantidade}
                         </h4>
 
+                        <h4 className="mt-2 mb-4 text-gray-600">
+                        {incident.situacao}
+                        </h4>
+
                         <div className="sm:block flex flex-col mt-10">
                           <button>
                             <Link
