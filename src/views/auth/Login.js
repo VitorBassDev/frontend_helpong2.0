@@ -25,6 +25,7 @@ function LoginOng() {
       //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
       localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
       localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
+      localStorage.setItem('ongEmail',  resposta.data.usuario.email);      
       localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
       localStorage.setItem('ongToken',  resposta.data.token);        
       
