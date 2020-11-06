@@ -8,7 +8,11 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 // views
 
 import Login from "views/auth/Login.js";
-import Register from "views/auth/Register.js";
+import CadastrarOng from "views/auth/Register.js";
+
+
+import CadastrarDoador from "views/auth/RegisterDoador.js";
+
 
 export default function Auth() {
   return (
@@ -25,7 +29,11 @@ export default function Auth() {
           ></div>
           <Switch>
             <Route path="/auth/login" exact component={Login} />
-            <Route path="/auth/register" exact component={Register} />
+            <Route path="/auth/ong" exact component={CadastrarOng} />
+            
+            {/* CADASTRAR USUÁRIO */}
+            <Route path="/auth/doador" exact component={CadastrarDoador} />
+            
             <Redirect from="/auth" to="/auth/login" />
           </Switch>
         </section>

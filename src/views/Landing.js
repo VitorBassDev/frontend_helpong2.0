@@ -3,6 +3,7 @@ import React from "react";
 // components
 import Navbar from "components/Navbars/AuthNavbar.js";
 import ListaNecessidade from "components/Necessidades/listaNecessidade.js"
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -27,7 +28,9 @@ export default function Landing() {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
-                   Seja um Doador
+                    <Link to="auth/doador">
+                      Seja um Doador
+                    </Link>
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
                    Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.

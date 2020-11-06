@@ -48,8 +48,8 @@ export default function Navbar(props) {
                   type="button"
                 >
                   <Link
-                  to="/auth/register">
-                    <i className="fas fa-arrow-alt-circle-down"></i> Cadastro
+                  to="/auth/ong">
+                    <i className="fas fa-arrow-alt-circle-down"></i> Cadastre-se
                   </Link>
                 </button>
 
