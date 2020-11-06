@@ -111,12 +111,12 @@ function LoginOng() {
                   onClick={(e) => e.preventDefault()}
                   className="text-gray-300"
                 >
-                  <small>Forgot password?</small>
+                  <small>Esquici Minha Senha</small>
                 </a>
               </div>
               <div className="w-1/2 text-right">
                 <Link to="/auth/register" className="text-gray-300">
-                  <small>Create new account</small>
+                  <small>Criar Conta</small>
                 </Link>
               </div>
             </div>

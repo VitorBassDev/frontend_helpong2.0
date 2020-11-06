@@ -27,14 +27,14 @@ function Register() {
     try {
       //const resposta = await api.post('usuario/usuario-ong', data);
 
-      const resposta = await api.post('usuario/usuarioTest-ong', data);
+      const resposta = await api.post('usuario/usuario-ong', data);
       swal({
         title: "Usuário Criado com Sucesso!",
         text: `Email de Acesso: ${resposta.data.email}`,
         icon: "success",
         button: "Logar!",
       }); 
-        //alert(`Seu ID de Acesso: ${resposta.data.cpf}`);
+       
       await history.push('/')
 
     } catch(err){
