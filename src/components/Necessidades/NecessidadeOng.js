@@ -11,7 +11,8 @@ function NecessidadesOng({ color }) {
   const ongId  = localStorage.getItem('ongId');
 
   useEffect(() => {
-    api.get('necessidade/necessidadeOng', {
+    api.get('necessidade/necessidadeOngTest', {
+      
     headers: {
       Authorization: ongId,
     }
@@ -23,7 +24,7 @@ function NecessidadesOng({ color }) {
   async function handleDeleteIncident(id_necessidade){
     try{
   
-      await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
+      await api.delete(`necessidade/deletaNecessidadeTest/${id_necessidade}`, {
         headers:{
           Authorization: ongId,
         }
@@ -164,9 +165,15 @@ function NecessidadesOng({ color }) {
                 
                 {/*<td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">*/}
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0   text-center">
-                  <Link to="" class="text-indigo-600 hover:text-indigo-900 px-4  ">Edit</Link>
-                  <button onClick={()=> handleDeleteIncident(incident.id_necessidade)} type="button"
-                   class="text-indigo-600 hover:text-indigo-900">Excluir</button>
+                  
+                  <Link to="" class="text-indigo-600 hover:text-indigo-900 px-4 ">
+                    Edit
+                  </Link>
+                  
+                  <button onClick={()=> handleDeleteIncident(incident.id_necessidade)} type="submit"
+                   class="text-indigo-600 hover:text-indigo-900">
+                     Excluir
+                  </button>
                 </td>
 
               </tr>

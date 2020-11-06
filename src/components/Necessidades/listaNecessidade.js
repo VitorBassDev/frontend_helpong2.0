@@ -9,7 +9,7 @@ function Necessidades() {
   const ongId   = localStorage.getItem('ongId');
 
   useEffect(() => {
-    api.get('necessidade/necessidadeGeral', {
+    api.get('necessidade/resumo', {
     headers: {
       Authorization: ongId,
     }
@@ -33,20 +33,12 @@ function Necessidades() {
                       <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                       <i className="fas fa-award"></i>
                       </div>
-                      
-                        <h3 className="text-xl font-semibold">Titulo</h3>
-                        <h4 className="mt-2 mb-4 text-gray-600">
+
+                        <h4 className="text-xl font-semibold mt-2 mb-4 ">
                         {incident.descricao}
                         </h4>
                         <h4 className="mt-2 mb-4 text-gray-600">
-                        {incident.identificador}
-                        </h4>
-                        <h4 className="mt-2 mb-4 text-gray-600">
-                        {incident.quantidade}
-                        </h4>
-
-                        <h4 className="mt-2 mb-4 text-gray-600">
-                        {incident.situacao}
+                        {incident.cidade}
                         </h4>
 
                         <div className="sm:block flex flex-col mt-10">
@@ -56,6 +48,7 @@ function Necessidades() {
                               className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                             >
                               Entrar em Contato
+                              {incident.id_necessidade}
                             </Link>
                           </button>
                         </div>

@@ -8,19 +8,17 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 function Doacao() {
 
   const [doacao, setDoacao] = useState([]);
-
   const ongId   = localStorage.getItem('ongId');
 
   useEffect(() => {
-    api.get('doacao', {
-      headers: {
-        
-      }
+    api.get(`necessidade/resumoDoacao/`, {
+
     }).then(response =>{
       setDoacao(response.data);
     })
-  }, [ongId]);
-
+  }, 
+  );
+  
   return (
     <>
       <Navbar transparent />
@@ -76,10 +74,7 @@ function Doacao() {
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
                     {doacao.situacao}
                   </div>
-                  <div className="mb-2 text-gray-700 mt-10">
-                    <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-                    {doacao.quantidade}
-                  </div>
+   
                   <div className="mb-2 text-gray-700">
                     <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
                     {doacao.identificador}
@@ -96,6 +91,9 @@ function Doacao() {
                     <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
                     {doacao.cpf}
                   </div>
+                </div>
+                <div className="mt-10 py-10 border-t border-gray-300 text-center">
+
                 </div>
               </div>
             </div>

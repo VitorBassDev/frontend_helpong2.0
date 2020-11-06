@@ -25,7 +25,9 @@ function Register() {
     };
 
     try {
-      const resposta = await api.post('usuario/usuario-ong', data);
+      //const resposta = await api.post('usuario/usuario-ong', data);
+
+      const resposta = await api.post('usuario/usuarioTest-ong', data);
       swal({
         title: "Usuário Criado com Sucesso!",
         text: `Email de Acesso: ${resposta.data.email}`,

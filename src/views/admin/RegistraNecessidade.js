@@ -6,11 +6,14 @@ import api from '../../services/api';
 
 function RegisterNecessidade() {
 	const[descricao,	setDescricao]   = useState('');
-	const[quantidade, setQuantidade]  = useState('');
-	const[situacao,		setSituacao]		= useState('');
+	const[cep,		setCep]		= useState('');
+	const[cidade,		setCidade]		= useState('');
+	const[bairro,		setBairro]		= useState('');
+	const[logadouro,		setLogadouro]		= useState('');
+	const[ddd,		setDdd]		= useState('');
+	const[numero,		setNumero]		= useState('');
 
 	const ongId   = localStorage.getItem('ongId');
-	//const ongCpf  = localStorage.getItem('ongCpf');
 	const history = useHistory();
 	
 	async function registrarNecessidade(e) {
@@ -19,12 +22,16 @@ function RegisterNecessidade() {
 
 		const data = {
 			descricao,
-			quantidade,
-			situacao,
+      cep,
+      cidade,
+      bairro,
+      logadouro,
+      ddd,
+      numero
 		};
 
 		try {
-			const resposta = await api.post('necessidade/registraNecessidade', data, {
+			const resposta = await api.post('necessidade/registraNecessidadeTest', data, {
 				headers:{
 					Authorization: ongId,
 				}
@@ -98,14 +105,14 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      quantidade
+                      CEP
                     </label>
                     <input
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Quantidade"
-                      value={quantidade}
-                      onChange={e => setQuantidade(e.target.value)}
+                      placeholder="CEP"
+                      value={cep}
+							      	onChange={(e) => setCep(e.target.value)}
                     />
                   </div>
 
@@ -114,14 +121,79 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Situação
+                      Cidade
                     </label>
                     <input
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Situação"
-                      value={situacao}
-							      	onChange={(e) => setSituacao(e.target.value)}
+                      placeholder="Cidade"
+                      value={cidade}
+							      	onChange={(e) => setCidade(e.target.value)}
+                    />
+                  </div>
+
+
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Bairro
+                    </label>
+                    <input
+                      type="text"
+                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="Bairro"
+                      value={bairro}
+							      	onChange={(e) => setBairro(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Logadouro
+                    </label>
+                    <input
+                      type="text"
+                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="Logadouro"
+                      value={logadouro}
+							      	onChange={(e) => setLogadouro(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      DDD
+                    </label>
+                    <input
+                      type="text"
+                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="DDD"
+                      value={ddd}
+							      	onChange={(e) => setDdd(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Numero
+                    </label>
+                    <input
+                      type="text"
+                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="Numero"
+                      value={numero}
+							      	onChange={(e) => setNumero(e.target.value)}
                     />
                   </div>
 
