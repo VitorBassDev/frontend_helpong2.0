@@ -7,12 +7,12 @@ import PropTypes from "prop-types";
 function NecessidadesOng({ color }) {
 		
   const [necessidade, setNecessidade] = useState([]);
-
+  
   const ongId  = localStorage.getItem('ongId');
 
   useEffect(() => {
     api.get('necessidade/necessidadeOngTest', {
-      
+
     headers: {
       Authorization: ongId,
     }
@@ -24,7 +24,7 @@ function NecessidadesOng({ color }) {
   async function handleDeleteIncident(id_necessidade){
     try{
   
-      await api.delete(`necessidade/deletaNecessidadeTest/${id_necessidade}`, {
+      await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
         headers:{
           Authorization: ongId,
         }
@@ -38,6 +38,44 @@ function NecessidadesOng({ color }) {
     alert('Erro ao Deletar o Caso');
   }
 }
+
+  async function ReceberDoacao(id_necessidade){
+    try{
+
+    api.post(`necessidade/receberDoacaoTest/${id_necessidade}`, {
+      headers:{
+        Authorization: ongId,
+      }
+    },
+      //console.log(resposta),
+      alert('Necessidade Atendida')
+    );
+
+        setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+    } catch (err){
+      console.log(err)
+        alert('Deu nessa bagaça');
+    }
+}
+
+
+async function EditarNecessidade(id_necessidade){
+  try{
+    await api.get(`necessidade/buscaId/${id_necessidade}`, {
+      headers:{
+        Authorization: ongId,
+      }
+    },
+  
+    alert('Cheguei Aqui')
+    );
+
+      setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+    } catch (err){
+      alert('Deu Erro aqui');
+    }
+}
+
   return (      
     <>
     <div
@@ -166,13 +204,25 @@ function NecessidadesOng({ color }) {
                 {/*<td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">*/}
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0   text-center">
                   
-                  <Link to="" class="text-indigo-600 hover:text-indigo-900 px-4 ">
-                    Edit
-                  </Link>
+                  {/** EDITAR */}
+                  <button onClick={()=> EditarNecessidade(incident.id_necessidade)} type="submit">
+                    <Link to="/admin/AlterarNecessidade">
+                    <i class="px-4 fas fa-edit"></i>
+                    </Link>
+                  </button>
                   
+
+                  {/** RECEBER EXCLUIR */}
                   <button onClick={()=> handleDeleteIncident(incident.id_necessidade)} type="submit"
                    class="text-indigo-600 hover:text-indigo-900">
-                     Excluir
+                     <i class="px-4 far fa-trash-alt"></i>
+                     
+                  </button>
+
+                  {/** RECEBER DOAÇÃO */}
+                  <button onClick={()=> ReceberDoacao (incident.id_necessidade)} type="submit"
+                   class="text-indigo-600 hover:text-indigo-900">
+                     <i class="px-4 fas fa-people-carry"></i>
                   </button>
                 </td>
 

@@ -15,6 +15,7 @@ import Maps from "views/admin/Maps.js";
 import Settings from "views/admin/Settings.js";
 import Tables from "views/admin/TablesNecessidade.js";
 import Necessidade from "views/admin/RegistraNecessidade.js";
+import AlterarNecessidade from "views/admin/EditaNecessidade.js";
 
 export default function Admin() {
   return (
@@ -32,6 +33,7 @@ export default function Admin() {
             <Route path="/admin/settings" exact component={Settings} />
             <Route path="/admin/tables" exact component={Tables} />
             <Route path="/admin/necessidade" exact component={Necessidade} />
+            <Route path="/admin/AlterarNecessidade" exact component={AlterarNecessidade} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
           <FooterAdmin />
