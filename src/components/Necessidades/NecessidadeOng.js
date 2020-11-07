@@ -42,7 +42,7 @@ function NecessidadesOng({ color }) {
   async function ReceberDoacao(id_necessidade){
     try{
 
-    api.post(`necessidade/receberDoacaoTest/${id_necessidade}`, {
+    api.put(`doacao/receberDoacao/${id_necessidade}`, {
       headers:{
         Authorization: ongId,
       }
