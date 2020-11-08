@@ -12,6 +12,7 @@ import CadastrarOng from "views/auth/Register.js";
 
 
 import CadastrarDoador from "views/auth/RegisterDoador.js";
+import CadastrarAdministrador from "views/auth/RegisterAdministrador.js";
 
 
 export default function Auth() {
@@ -31,8 +32,9 @@ export default function Auth() {
             <Route path="/auth/login" exact component={Login} />
             <Route path="/auth/ong" exact component={CadastrarOng} />
             
-            {/* CADASTRAR USUÁRIO */}
+            {/* CADASTRAR USUÁRIO - DOADOR E ADMINISTRADOR */}
             <Route path="/auth/doador" exact component={CadastrarDoador} />
+            <Route path="/auth/administrador" exact component={CadastrarAdministrador} />
             
             <Redirect from="/auth" to="/auth/login" />
           </Switch>

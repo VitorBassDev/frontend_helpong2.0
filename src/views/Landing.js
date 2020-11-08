@@ -32,6 +32,12 @@ export default function Landing() {
                       Seja um Doador
                     </Link>
                   </h1>
+
+                  <h1 className="text-white font-semibold text-5xl">
+                    <Link to="auth/administrador">
+                      Seja um Administrador
+                    </Link>
+                  </h1>
                   <p className="mt-4 text-lg text-gray-300">
                    Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.
                   </p>
