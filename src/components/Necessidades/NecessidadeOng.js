@@ -13,7 +13,7 @@ function NecessidadesOng({ color }) {
   const ongId  = localStorage.getItem('ongId');
 
   useEffect(() => {
-    api.get('necessidade/necessidadeOngTest', {
+    api.get('necessidade/necessidadeOngTestv2', {
 
     headers: {
       Authorization: ongId,
@@ -93,10 +93,10 @@ async function EditarNecessidade(id_necessidade){
     >
       <div className="rounded-t mb-0 px-4 py-3 border-0">
         <div className="flex flex-wrap items-center">
-          <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+          <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-center">
             <h3
               className={
-                "font-semibold text-lg  uppercase" +
+                "font-semibold text-lg  uppercase text-center"  +
                 (color === "light" ? "text-gray-800" : "text-white")
               }
             >
@@ -110,16 +110,6 @@ async function EditarNecessidade(id_necessidade){
         <table className="items-center w-full bg-transparent border-collapse">
           <thead>
             <tr>
-              <th
-                className={
-                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
-                  (color === "light"
-                    ? "bg-gray-100 text-gray-600 border-gray-200"
-                    : "bg-blue-800 text-blue-300 border-blue-700")
-                }
-              >
-                Título
-              </th>
 
               <th
                 className={
@@ -140,17 +130,6 @@ async function EditarNecessidade(id_necessidade){
                     : "bg-blue-800 text-blue-300 border-blue-700")
                 }
               >
-                quantidade
-              </th>
-
-              <th
-                className={
-                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
-                  (color === "light"
-                    ? "bg-gray-100 text-gray-600 border-gray-200"
-                    : "bg-blue-800 text-blue-300 border-blue-700")
-                }
-              >
                 situação
               </th>
 
@@ -162,8 +141,52 @@ async function EditarNecessidade(id_necessidade){
                     : "bg-blue-800 text-blue-300 border-blue-700")
                 }
               >
-                identificador
+                Cod <br/>Identificador
               </th>
+
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-gray-100 text-gray-600 border-gray-200"
+                    : "bg-blue-800 text-blue-300 border-blue-700")
+                }
+              >
+                cidade
+              </th>
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-gray-100 text-gray-600 border-gray-200"
+                    : "bg-blue-800 text-blue-300 border-blue-700")
+                }
+              >
+                bairro
+              </th>
+
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-gray-100 text-gray-600 border-gray-200"
+                    : "bg-blue-800 text-blue-300 border-blue-700")
+                }
+              >
+                ddd
+              </th>
+
+              <th
+               className={
+                "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-gray-100 text-gray-600 border-gray-200"
+                    : "bg-blue-800 text-blue-300 border-blue-700")
+                }
+              >
+                telefone
+              </th>
+
 
               <th
                 className={
@@ -173,39 +196,36 @@ async function EditarNecessidade(id_necessidade){
                     : "bg-blue-800 text-blue-300 border-blue-700")
                 }
               >
-                Opções
+                ações
               </th>
             </tr>
           </thead>
 
           {necessidade.map(incident =>(
             <tbody>
-              <tr>
-                <th 
-                  key={incident.id_necessidade}
-                  className=" h-14 mt-1  border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-2 text-left flex items-center">
-
-                  <span
-                    className={
-                      "ml-3 font-bold " +
-                      +(color === "light" ? "text-gray-700" : "text-white")
-                    }
-                  >
-          
-                  </span>
-                </th>
+              <tr   key={incident.id_necessidade}>
+ 
 
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                 {incident.descricao}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                {incident.quantidade}
-                </td>
-                <td className="bg-green-100 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                 {incident.situacao}
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                <td className="bg-green-100 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                 {incident.identificador}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                {incident.cidade}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                {incident.bairro}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                {incident.ddd}                
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                {incident.numero}                
                 </td>
                 
                 {/*<td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">*/}

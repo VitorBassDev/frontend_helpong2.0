@@ -36,7 +36,7 @@ function RegisterNecessidade() {
 					Authorization: ongId,
 				}
 			});
-			if(ongId){
+			if(resposta.data.identificador){
 				swal({
 					title: "Necessidade Cadastrada com Sucesso ! ",
 					text: `Código de Rastreio: ${resposta.data.identificador}`,
@@ -46,20 +46,21 @@ function RegisterNecessidade() {
 				history.push('/admin/dashboard');
 			} else {
 				swal({
-					title: "Usuário Não encontrado ",
-					text: "Faça login para registrar sua necessidade",
-					icon: "error",
-					button: "Logar",
+          title: "Algo deu errado !",
+          text: " Tente novamente !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+				
 				});
 				history.push('/admin/necessidade');
 			}
 
 		} catch(err){
 			swal({
-        title: "Algo deu errado !",
-        text: " Veriique Suas Credenciais !",
-        icon: "warning",
-        button: "Tentar Novamente !",
+      	title: "Usuário Não encontrado ",
+					text: "Faça login para registrar sua necessidade",
+					icon: "error",
+					button: "Logar",
       });
 		}
   }
