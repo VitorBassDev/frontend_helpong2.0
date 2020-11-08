@@ -20,6 +20,11 @@ html {
  * Remove the margin in all browsers.
  */
 
+ .profile-container ul {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+}
+
 body {
   margin: 0;
 }

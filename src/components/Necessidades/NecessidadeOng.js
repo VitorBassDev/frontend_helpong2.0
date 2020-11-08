@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 import {Link } from "react-router-dom";
 import api from '../../services/api';
 
 import PropTypes from "prop-types";
 
 function NecessidadesOng({ color }) {
+  const history = useHistory();
 		
   const [necessidade, setNecessidade] = useState([]);
   
@@ -31,12 +33,16 @@ function NecessidadesOng({ color }) {
         
       },
       alert('Caso deletado com sucesso')
+      
       );
+      
 
       setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+      history.push('/admin/dashboard');
   } catch (err){
     alert('Erro ao Deletar o Caso');
   }
+  
 }
 
   async function ReceberDoacao(id_necessidade){
@@ -58,7 +64,6 @@ function NecessidadesOng({ color }) {
     }
 }
 
-
 async function EditarNecessidade(id_necessidade){
   try{
     await api.get(`necessidade/buscaId/${id_necessidade}`, {
@@ -74,6 +79,8 @@ async function EditarNecessidade(id_necessidade){
     } catch (err){
       alert('Deu Erro aqui');
     }
+
+
 }
 
   return (      

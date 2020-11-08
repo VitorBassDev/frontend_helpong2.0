@@ -12,7 +12,7 @@ import Auth from "layouts/Auth.js";
 import Profile from "views/Profile.js";
 import Index from "views/Landing.js";
 
-import Doacao from "./components/Doacao/Doacao"
+import Doacao from "./components/Doacao/ListaDoacao"
 
 export default function Routes(){
   return(

@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 import Navbar from "components/Navbars/AuthNavbar.js";
-import ListaNecessidade from "components/Necessidades/listaNecessidade.js"
+import ListaNecessidadePaginaInicial from "components/Necessidades/ListaPaginaInicial.js"
 import { Link } from "react-router-dom";
 
 export default function Landing() {
@@ -60,7 +60,7 @@ export default function Landing() {
           </div>
         </div>
       </main>
-      <ListaNecessidade/>
+      <ListaNecessidadePaginaInicial/>
     </>
   );
 }

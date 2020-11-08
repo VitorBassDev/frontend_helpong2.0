@@ -8,10 +8,10 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 function Doacao() {
 
   const [doacao, setDoacao] = useState([]);
-  const ongId   = localStorage.getItem('ongId');
+  //const ongId   = localStorage.getItem('ongId');
 
   useEffect(() => {
-    api.get(`necessidade/resumoDoacao/`, {
+    api.get(`necessidade/listaPaginaDoacao/`, {
 
     }).then(response =>{
       setDoacao(response.data);
@@ -81,6 +81,18 @@ function Doacao() {
                   </div>
                   <div className="mb-2 text-gray-700">
                     <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
+                    {doacao.cidade}
+                  </div>
+                  <div className="mb-2 text-gray-700">
+                    <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
+                    {doacao.ddd}
+                  </div>
+                  <div className="mb-2 text-gray-700">
+                    <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
+                    {doacao.numero}
+                  </div>
+                  <div className="mb-2 text-gray-700">
+                    <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
                     {doacao.nome}
                   </div>
                   <div className="mb-2 text-gray-700">
@@ -89,7 +101,7 @@ function Doacao() {
                   </div>
                   <div className="mb-2 text-gray-700">
                     <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
-                    {doacao.cpf}
+                    {doacao.user}
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-gray-300 text-center">
