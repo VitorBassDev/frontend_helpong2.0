@@ -13,7 +13,7 @@ function NecessidadesOng({ color }) {
   const ongId  = localStorage.getItem('ongId');
 
   useEffect(() => {
-    api.get('necessidade/necessidadeOngTestv2', {
+    api.get('necessidade/necessidadeNaoAtendida', {
 
     headers: {
       Authorization: ongId,
@@ -36,7 +36,6 @@ function NecessidadesOng({ color }) {
       
       );
       
-
       setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
       history.push('/admin/dashboard');
   } catch (err){
@@ -88,7 +87,7 @@ async function EditarNecessidade(id_necessidade){
     <div
       className={
         "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-        (color === "light" ? "bg-white" : "bg-blue-900 text-white")
+        (color === "dark  " ? "bg-white" : "bg-blue-900 text-white")
       }
     >
       <div className="rounded-t mb-0 px-4 py-3 border-0">

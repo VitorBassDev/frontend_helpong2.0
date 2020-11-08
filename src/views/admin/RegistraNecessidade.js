@@ -31,7 +31,7 @@ function RegisterNecessidade() {
 		};
 
 		try {
-			const resposta = await api.post('necessidade/registraNecessidadeTest', data, {
+			const resposta = await api.post('necessidade/registraNecessidade', data, {
 				headers:{
 					Authorization: ongId,
 				}

@@ -1,13 +1,15 @@
 import React from "react";
 
 // components
-import NecessidadeOng from "components/Necessidades/NecessidadeOng.js";
+import NecessidadeAtendida from "components/Necessidades/NecessidadeAtendida.js";
+import NecessidadeNaoAtendida from "components/Necessidades/NecessidadeNaoAtendida.js";
 
 
 export default function Dashboard() {
   return (
     <>
-      <NecessidadeOng />
+      <NecessidadeAtendida />
+      <NecessidadeNaoAtendida />
     </>
   );
 }
