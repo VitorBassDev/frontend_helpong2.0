@@ -71,19 +71,19 @@ const IndexDropdown = () => {
           Cadastro
         </span>
         <Link
-          to="/cria/ong"
+          to="/auth/registerOng"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
         >
           ONG
         </Link>
         <Link
-          to="/cria/doador"
+          to="/auth/registerDoador"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
         >
           Doador
         </Link>
         <Link
-          to="/cria/administrador"
+          to="/auth/registerAdministrador"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
         >
           Administrador

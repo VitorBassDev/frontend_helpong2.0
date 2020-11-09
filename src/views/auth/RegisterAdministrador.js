@@ -4,7 +4,7 @@ import swal from 'sweetalert'
 
 import api from '../../services/api';
 
-function Register() {
+function RegisterAdministrador() {
 
   const[nome,   setNome]    = useState('');
   const[email,  setEmail]   = useState('');
@@ -56,7 +56,7 @@ function Register() {
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-gray-600 text-lg font-bold">
-                    Criar Conta
+                    Criar Conta - Administrador
                   </h6>
                 </div>
   
@@ -147,4 +147,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterAdministrador;

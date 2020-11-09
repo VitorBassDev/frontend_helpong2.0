@@ -29,7 +29,6 @@ export default function Routes(){
       
       <Route path="/doacao" exact component={Doacao} />
       
-
       {/* add routes with layouts */}
       <Route path="/admin" component={Admin} />
       <Route path="/auth" component={Auth} />
