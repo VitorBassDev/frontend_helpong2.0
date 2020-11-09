@@ -35,7 +35,7 @@ function Register() {
         button: "Logar!",
       }); 
        
-      await history.push('/')
+      await history.push('/auth/doador')
 
     } catch(err){
       swal({

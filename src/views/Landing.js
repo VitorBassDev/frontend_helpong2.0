@@ -1,6 +1,7 @@
 import React from "react";
 
 // components
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Navbar from "components/Navbars/AuthNavbar.js";
 import ListaNecessidadePaginaInicial from "components/Necessidades/ListaPaginaInicial.js"
 import { Link } from "react-router-dom";
@@ -8,7 +9,9 @@ import { Link } from "react-router-dom";
 export default function Landing() {
   return (
     <>
-      <Navbar transparent />
+      <Navbar  />
+      <IndexNavbar fixed />
+      
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div

@@ -35,7 +35,7 @@ function Register() {
         button: "Logar!",
       }); 
        
-      await history.push('/')
+      
 
     } catch(err){
       swal({
@@ -45,6 +45,7 @@ function Register() {
         button: "Tentar Novamente !",
       });
     }
+    await history.push('/auth/administrador')
   }
   return (
     <>
