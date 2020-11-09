@@ -38,6 +38,10 @@ export default function Landing() {
                   <p className="mt-4 text-lg text-gray-300">
                    Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.
                   </p>
+
+                  <p className="mt-4 text-lg text-gray-300">
+                   Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.
+                  </p>
                 </div>
               </div>
             </div>

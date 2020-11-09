@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { createPopper } from "@popperjs/core";
+import {useHistory} from 'react-router-dom';
+import swal from 'sweetalert'
 
 const IndexDropdown = () => {
+
+  const ongId   = localStorage.getItem('ongId');
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -13,9 +17,42 @@ const IndexDropdown = () => {
     });
     setDropdownPopoverShow(true);
   };
+
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+
+  const history = useHistory();
+  function handleLogout(){
+
+    try {
+
+      if  (ongId)   {
+        localStorage.clear();
+        history.push('/');
+        swal({
+          title: "Usuário Desconectado!",
+          icon: "success",
+          button: "Ok!",
+        });    
+      } else {
+        swal({
+          title: "Nenhum Usuário Conectado !",
+          icon: "warning",
+          button: "Ok !",
+        });
+      }
+
+    } catch (err) {
+      swal({
+        title: "Algo deu errado !",
+        text: " VerTente novamente !",
+        icon: "error",
+        button: "Tentar Novamente !",
+      });
+    }
+  }
+
   return (
     <>
       <a
@@ -90,7 +127,7 @@ const IndexDropdown = () => {
         </Link>
 
         <Link
-          to="/auth/registerAdministrador"
+         onClick={handleLogout}
           className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
         >
           Sair
