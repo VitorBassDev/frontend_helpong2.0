@@ -10,7 +10,8 @@ export default function Landing() {
   return (
     <>
      
-      <IndexNavbar fixed />
+    {/*<Navbar fixed />*/}
+    <IndexNavbar fixed />
       
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
@@ -32,6 +33,7 @@ export default function Landing() {
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
                       Seja um Doador
+
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
                    Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.

@@ -4,6 +4,7 @@ import {  BrowserRouter, Route, Switch } from 'react-router-dom';
 // layouts
 
 import Admin from "layouts/Admin.js";
+import AdminFull from "layouts/AdminFull.js";
 import Auth from "layouts/Auth.js";
 
 // views without layouts
@@ -31,6 +32,7 @@ export default function Routes(){
       
       {/* add routes with layouts */}
       <Route path="/admin" component={Admin} />
+      <Route path="/adminFull" component={AdminFull} />
       <Route path="/auth" component={Auth} />
 
     </Switch>

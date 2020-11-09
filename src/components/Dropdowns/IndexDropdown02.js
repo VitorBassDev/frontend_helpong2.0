@@ -19,7 +19,7 @@ const IndexDropdown = () => {
   return (
     <>
       <a
-        className="hover:text-gray-600 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+        className="hover:text-gray-600 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-lg uppercase font-bold"
         href="#pablo"
         ref={btnDropdownRef}
         onClick={(e) => {
@@ -87,6 +87,13 @@ const IndexDropdown = () => {
           className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
         >
           Administrador
+        </Link>
+
+        <Link
+          to="/auth/registerAdministrador"
+          className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
+        >
+          Sair
         </Link>
       </div>
     </>

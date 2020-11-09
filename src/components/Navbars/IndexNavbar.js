@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import IndexDropdown from "components/Dropdowns/IndexDropdown02.js";
 
 export default function Navbar(props) {
+  const ongName = localStorage.getItem('ongNome')
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -18,6 +19,12 @@ export default function Navbar(props) {
             >
               Help a Ong
             </Link>
+            <Link 
+            to="admin">
+              <span className="text-gray-800 font-bold text-lg uppercase">{ongName}</span>
+              
+            </Link>
+
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -26,6 +33,8 @@ export default function Navbar(props) {
               <i className="fas fa-bars"></i>
             </button>
           </div>
+
+
           <div
             className={
               "lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none" +

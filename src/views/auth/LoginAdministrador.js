@@ -29,7 +29,7 @@ function LoginOng() {
       localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
       localStorage.setItem('ongToken',  resposta.data.token);        
       
-      await history.push('/')
+      await history.push('/adminFull')
       
     } catch (err) {
       swal({
