@@ -3,44 +3,58 @@ import { Link, useHistory } from "react-router-dom";
 import swal from 'sweetalert'
 import api from '../../services/api';
 
-function LoginOng() {
+function LoginAdministrador() {
 
   const [email, setEmail] = useState('');
   const [senha_usuario, setPassword] = useState('');
 
   const history = useHistory(); 
 
-  async function handleLogin(e){
+  async function loginAdministrador(e){
     e.preventDefault();
-    try{
-      const resposta = await api.post('autenticacao/authAdministrador', {email, senha_usuario} );
-      
-      console.log(resposta.data.usuario.nome);
+
+    const data = {
+      email,
+      senha_usuario,
+    };
+    if(data.email == "" ||  data.senha_usuario == ""){
       swal({
-        title: "Perfil Verificado!",
-        text: "Usuário logado com Sucesso!",
-        icon: "success",
-        button: "Ok!",
-      });      
-      //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
-      localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
-      localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
-      localStorage.setItem('ongEmail',  resposta.data.usuario.email);      
-      localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
-      localStorage.setItem('ongToken',  resposta.data.token);        
-      
-      await history.push('/adminFull')
-      
-    } catch (err) {
-      swal({
-        title: "Algo deu errado !",
-        text: " Verifique Suas Credenciais !",
+        title: "campos obrigatórios não preenchidos !",
+        text: " Preencha todos os campos para logar" ,
         icon: "warning",
         button: "Tentar Novamente !",
       });
+    } else {
+      
+      try{
+        const resposta = await api.post('autenticacao/authAdministrador', {email, senha_usuario} );
+        
+        console.log(resposta.data.usuario.nome);
+        swal({
+          title: "Perfil Verificado!",
+          text: "Usuário logado com Sucesso!",
+          icon: "success",
+          button: "Ok!",
+        });      
+        //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
+        localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
+        localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
+        localStorage.setItem('ongEmail',  resposta.data.usuario.email);      
+        localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
+        localStorage.setItem('ongToken',  resposta.data.token);        
+        
+        await history.push('/adminFull')
+        
+      } catch (err) {
+        swal({
+          title: "Algo deu errado !",
+          text: " Verifique Suas Credenciais !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+        });
+      }
     }
   }
-
   return (
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
@@ -57,7 +71,7 @@ function LoginOng() {
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
    
-              <form onSubmit={handleLogin}>
+              <form onSubmit={loginAdministrador}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"             
@@ -126,4 +140,4 @@ function LoginOng() {
       </div>
   );
 }
-export default LoginOng;
+export default LoginAdministrador;
