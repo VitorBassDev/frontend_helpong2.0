@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import {Link } from "react-router-dom";
+import swal from 'sweetalert'
 import api from '../../services/api';
 
 import PropTypes from "prop-types";
@@ -23,44 +24,97 @@ function NecessidadesOng({ color }) {
     })
   }, [ongId]);
   
-  async function handleDeleteIncident(id_necessidade){
+  async function deletarNecessidade(id_necessidade){
     try{
-  
-      await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
-        headers:{
-          Authorization: ongId,
+      swal({
+        title: "Tem que deseja excluir?",
+        text: " Clique em OK",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal({
+            title: "Necessidade excluída com sucesso",
+            icon: "success",
+            button: "Ok!",
+          });
+          api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
+            headers:{
+              Authorization: ongId,
+            }
+          },
+          );  
+          setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+          history.push('/admin/dashboard');
+          
+        } else {
+          swal({
+            title: "Operação Cancelada",
+            icon: "sucess",
+            button: "Ok!",
+          });
         }
-        
-      },
-      alert('Caso deletado com sucesso')
-      
-      );
-      
-      setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
-      history.push('/admin/dashboard');
-  } catch (err){
-    alert('Erro ao Deletar o Caso');
-  }
+      });
   
+  } catch (err){
+
+    swal({
+      title: "Algo deu errado !",
+      text: " Tente excluír novamente !",
+      icon: "warning",
+      button: "Tentar Novamente !",
+    
+    });
+  }
 }
 
-  async function ReceberDoacao(id_necessidade){
+  async function receberDoacao(id_necessidade){
+
     try{
+      swal({
+        title: "Informar que a necessidade já foi atendida",
+        text: " Clique em OK",
+        icon: "sucess",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal({
+            title: "Necessidade Atendida",
+            icon: "success",
+            button: "Ok!",
+          });
+          api.put(`doacao/receberDoacao/${id_necessidade}`, {
+            headers:{
+              Authorization: ongId,
+            }
+          },
+          );  
+          setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+          history.push('/admin/dashboard');
+          
+        } else {
+          swal({
+            title: "Operação Cancelada",
+            icon: "sucess",
+            button: "Ok!",
+          });
+        }
+      });
+  
+  } catch (err){
 
-    api.put(`doacao/receberDoacao/${id_necessidade}`, {
-      headers:{
-        Authorization: ongId,
-      }
-    },
-      //console.log(resposta),
-      alert('Necessidade Atendida')
-    );
-
-        setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
-    } catch (err){
-      console.log(err)
-        alert('Deu nessa bagaça');
-    }
+    swal({
+      title: "Algo deu errado !",
+      text: " Tente excluír novamente !",
+      icon: "warning",
+      button: "Tentar Novamente !",
+    
+    });
+  }    
 }
 
 async function EditarNecessidade(id_necessidade){
@@ -239,14 +293,14 @@ async function EditarNecessidade(id_necessidade){
                   
 
                   {/** RECEBER EXCLUIR */}
-                  <button onClick={()=> handleDeleteIncident(incident.id_necessidade)} type="submit"
+                  <button onClick={()=> deletarNecessidade(incident.id_necessidade)} type="submit"
                    class="text-indigo-600 hover:text-indigo-900">
                      <i class="px-4 far fa-trash-alt"></i>
                      
                   </button>
 
                   {/** RECEBER DOAÇÃO */}
-                  <button onClick={()=> ReceberDoacao (incident.id_necessidade)} type="submit"
+                  <button onClick={()=> receberDoacao (incident.id_necessidade)} type="submit"
                    class="text-indigo-600 hover:text-indigo-900">
                      <i class="px-4 fas fa-people-carry"></i>
                   </button>

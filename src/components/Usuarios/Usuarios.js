@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert'
 import {Link } from "react-router-dom";
 import api from '../../services/api';
 
@@ -25,23 +26,49 @@ function NecessidadesOng({ color }) {
   
   async function deletarUsuario(id_necessidade){
     try{
-  
-      await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
-        headers:{
-          Authorization: ongId,
+
+      swal({
+        title: "Tem que deseja excluir este usuário?",
+        text: " Clique em OK",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal({
+            title: "Usuário exclído com sucesso",
+            icon: "success",
+            button: "Ok!",
+          });
+          api.delete(`usuario/deletaUsuarioTest/${id_necessidade}`, {
+            headers:{
+              Authorization: ongId,
+            }
+          },
+          );  
+          setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+          history.push('/adminFull/dashboard');
+          
+        } else {
+          swal({
+            title: "Operação Cancelada",
+            icon: "sucess",
+            button: "Ok!",
+          });
         }
-        
-      },
-      alert('Caso deletado com sucesso')
-      
-      );
-      
-      setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
-      history.push('/admin/dashboard');
-  } catch (err){
-    alert('Erro ao Deletar o Caso');
-  }
+      });
   
+  } catch (err){
+
+    swal({
+      title: "Algo deu errado !",
+      text: " Tente excluír novamente !",
+      icon: "warning",
+      button: "Tentar Novamente !",
+    
+    });
+  }
 }
 
 async function EditarNecessidade(id_necessidade){
@@ -170,11 +197,9 @@ async function EditarNecessidade(id_necessidade){
 
           {necessidade.map(incident =>(
             <tbody>
-              <tr >
- 
-
+              <tr  key={incident.id_usuario} >
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
-                 key={incident.id_usuario}
+                
                 >
                 {incident.id_usuario}
                 </td>
@@ -198,7 +223,7 @@ async function EditarNecessidade(id_necessidade){
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0   text-center">
                   
                   {/** EDITAR */}
-                  <button onClick={()=> EditarNecessidade(incident.id_necessidade)} type="submit">
+                  <button onClick={()=> EditarNecessidade(incident.id_usuario)} type="submit">
                     <Link to="/admin/AlterarNecessidade">
                     <i class="px-4 fas fa-edit"></i>
                     </Link>
@@ -206,7 +231,7 @@ async function EditarNecessidade(id_necessidade){
                   
 
                   {/** EXCLUIR */}
-                  <button onClick={()=> deletarUsuario(incident.id_necessidade)} type="submit"
+                  <button onClick={()=> deletarUsuario(incident.id_usuario)} type="submit"
                    class="text-indigo-600 hover:text-indigo-900">
                      <i class="px-4 far fa-trash-alt"></i> 
                   </button>

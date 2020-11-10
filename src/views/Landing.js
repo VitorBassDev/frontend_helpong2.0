@@ -1,12 +1,27 @@
-import React from "react";
-
+import React, { useState, useEffect} from 'react';
+import api from '../services/api';
 // components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import Navbar from "components/Navbars/AuthNavbar.js";
+//import Navbar from "components/Navbars/AuthNavbar.js";
 import ListaNecessidadePaginaInicial from "components/Necessidades/ListaPaginaInicial.js"
-import { Link } from "react-router-dom";
 
 export default function Landing() {
+
+  const [resumo, setResumo] = useState([]);
+
+  const ongId   = localStorage.getItem('ongId');
+
+  useEffect(() => {
+    api.get('necessidade/totalAtendida', {
+    headers: {
+      Authorization: ongId,
+    }
+    }).then(response =>{
+      setResumo(response.data);
+    })
+ 
+  }, [ongId]);
+  
   return (
     <>
      
@@ -38,10 +53,13 @@ export default function Landing() {
                   <p className="mt-4 text-lg text-gray-300">
                    Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.
                   </p>
-
-                  <p className="mt-4 text-lg text-gray-300">
-                   Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.
+                  {resumo.map(incident =>(
+                  <p className="mt-4 text-lg text-gray-300" 
+                  key={resumo.resumo}
+                  >
+                  Ja Somamos mais de {incident.data} Doações
                   </p>
+                  ))}
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import {Link } from "react-router-dom";
+import swal from 'sweetalert'
 import api from '../../services/api';
 
 import PropTypes from "prop-types";
@@ -23,67 +24,117 @@ function NecessidadesOng({ color }) {
     })
   }, [ongId]);
   
-  async function handleDeleteIncident(id_necessidade){
+  async function deletarNecessidade(id_necessidade){
+
     try{
+      swal({
+        title: "Tem que deseja excluir?",
+        text: " Clique em OK",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal({
+            title: "Necessidade excluída com sucesso",
+            icon: "success",
+            button: "Ok!",
+          });
+          api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
+            headers:{
+              Authorization: ongId,
+            }
+          },
+          );  
+          setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+          history.push('/admin/dashboard');
+          
+        } else {
+          swal({
+            title: "Operação Cancelada",
+            icon: "sucess",
+            button: "Ok!",
+          });
+        }
+      });
   
-      await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
+  } catch (err){
+
+    swal({
+      title: "Algo deu errado !",
+      text: " Tente excluír novamente !",
+      icon: "warning",
+      button: "Tentar Novamente !",
+    
+    });
+  }
+}
+
+  async function desfazerDoacao(id_necessidade){
+
+    try{
+      swal({
+        title: "Informar que a necessidade ainda não foi atendida",
+        text: " Clique em OK",
+        icon: "sucess",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal({
+            title: "Necessidade Não Atendida",
+            icon: "success",
+            button: "Ok!",
+          });
+          api.put(`doacao/desfazerDoacao/${id_necessidade}`, {
+            headers:{
+              Authorization: ongId,
+            }
+          },
+          );  
+          setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
+          history.push('/admin/dashboard');
+          
+        } else {
+          swal({
+            title: "Operação Cancelada",
+            icon: "sucess",
+            button: "Ok!",
+          });
+        }
+      });
+  
+  } catch (err){
+
+    swal({
+      title: "Algo deu errado !",
+      text: " Tente excluír novamente !",
+      icon: "warning",
+      button: "Tentar Novamente !",
+    
+    });
+  }
+}
+
+  async function EditarNecessidade(id_necessidade){
+    try{
+      await api.get(`necessidade/buscaId/${id_necessidade}`, {
         headers:{
           Authorization: ongId,
         }
-        
       },
-      alert('Caso deletado com sucesso')
+      history.push('/admin/dashboard'),
+      alert('Cheguei Aqui')
       
       );
-      
-      setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
-      history.push('/admin/dashboard');
-  } catch (err){
-    alert('Erro ao Deletar o Caso');
-  }
-  
-}
-
-  async function ReceberDoacao(id_necessidade){
-    try{
-
-    api.put(`doacao/desfazerDoacao/${id_necessidade}`, {
-      headers:{
-        Authorization: ongId,
-      }
-    },
-      //console.log(resposta),
-      history.push('/admin/dashboard'),
-      alert('Doação Desfeita')
-      
-    );
 
         setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
-    } catch (err){
-      console.log(err)
-        alert('Deu nessa bagaça');
-    }
-}
-
-async function EditarNecessidade(id_necessidade){
-  try{
-    await api.get(`necessidade/buscaId/${id_necessidade}`, {
-      headers:{
-        Authorization: ongId,
+      } catch (err){
+        alert('Deu Erro aqui');
       }
-    },
-    history.push('/admin/dashboard'),
-    alert('Cheguei Aqui')
-    
-    );
-
-      setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
-    } catch (err){
-      alert('Deu Erro aqui');
-    }
-
-
-}
+  }
 
   return (      
     <>
@@ -242,14 +293,14 @@ async function EditarNecessidade(id_necessidade){
                   
 
                   {/** RECEBER EXCLUIR */}
-                  <button onClick={()=> handleDeleteIncident(incident.id_necessidade)} type="submit"
+                  <button onClick={()=> deletarNecessidade(incident.id_necessidade)} type="submit"
                    class="text-indigo-600 hover:text-indigo-900">
                      <i class="px-4 far fa-trash-alt"></i>
                      
                   </button>
 
                   {/** RECEBER DOAÇÃO */}
-                  <button onClick={()=> ReceberDoacao (incident.id_necessidade)} type="submit"
+                  <button onClick={()=> desfazerDoacao (incident.id_necessidade)} type="submit"
                    class="text-indigo-600 hover:text-indigo-900">
                      <i class="px-4 fas fa-people-carry"></i>
                   </button>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert'
 
@@ -15,9 +15,12 @@ function RegisterNecessidade() {
 
 	const ongId   = localStorage.getItem('ongId');
 	const history = useHistory();
-	
-	async function registrarNecessidade(e) {
-		e.preventDefault();
+  
+  useEffect(() => {}, []);
+  
+  async function registrarNecessidade(e) {
+    e.preventDefault();
+  
 		//console.log(e)
 
 		const data = {

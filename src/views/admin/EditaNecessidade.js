@@ -12,7 +12,7 @@ function EditNecessidade() {
   
   const history = useHistory();
   
-	async function registrarNecessidade(e) {
+	async function atualizaNecessidade(e) {
 		e.preventDefault();
 		console.log(e)
 
@@ -69,7 +69,7 @@ function EditNecessidade() {
               
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
 
-                <form onSubmit={registrarNecessidade}>
+                <form onSubmit={atualizaNecessidade}>
 
                   <div className="relative w-full mb-3" >
                     <label
