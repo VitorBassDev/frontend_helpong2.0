@@ -1,6 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
+//import../../assets/script/validacao.jsjs"
+import { Form } from '@unform/web'
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert'
+
+import Input    from '../../components/Form/Input'
+import TextArea from '../../components/Form/TextArea'
+ 
 
 import api from '../../services/api';
 
@@ -15,24 +21,36 @@ function RegisterNecessidade() {
 
 	const ongId   = localStorage.getItem('ongId');
 	const history = useHistory();
-  
+  const formRef = useRef(null)
+
   useEffect(() => {}, []);
   
   async function registrarNecessidade(e) {
-    e.preventDefault();
+    //e.preventDefault();
   
-		//console.log(e)
+		//console.log(data)
 
 		const data = {
 			descricao,
       cep,
       cidade,
-      bairro,
+      bairro, 
       logadouro,
       ddd,
       numero
-		};
+    };
 
+    formRef.current.setErrors({
+      cidade:       ' CIDADE   - campo obrigatório',
+      descricao:    'DESCRIÇÃO - campo obrigatório',
+      cep:          'CEP       - campo obrigatório',
+      bairro:       'BAIRRO    - campo obrigatório',
+      logadouro:    'LOGADOURO - campo obrigatório',
+      ddd:          'DDD       - campo obrigatório',
+      numero:       'NUMERO    - campo obrigatório',
+
+    })
+  
 		try {
 			const resposta = await api.post('necessidade/registraNecessidade', data, {
 				headers:{
@@ -47,16 +65,36 @@ function RegisterNecessidade() {
 					button: "Ok!",
 				});
 				history.push('/admin/dashboard');
-			} else {
+			} else {/*
 				swal({
-          title: "Algo deu errado !",
+          title: "Algo deu errado ok !",
           text: " Tente novamente !",
           icon: "warning",
           button: "Tentar Novamente !",
 				
-				});
+        });
+        */
 				history.push('/admin/necessidade');
-			}
+      }
+
+      /*
+      if(
+        data.descricao === "" ||  
+        data.cep       == "" || 
+        data.cidade    == "" || 
+        data.bairro    == "" ||
+        data.logadouro == "" ||
+        data.ddd       == "" ||
+        data.numero    == "" 
+      ) {
+        swal({
+          title: "Campos Obrgatórios não preenchidos ",
+          text: "Preencha todos os campos",
+          icon: "error",
+          button: "Tentar Novamente",
+        });
+      }
+      */
 
 		} catch(err){
 			swal({
@@ -84,8 +122,8 @@ function RegisterNecessidade() {
                 <hr className="mt-6 border-b-1 border-gray-400" />
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
- 
-                <form onSubmit={registrarNecessidade}>
+
+              <Form ref={formRef} onSubmit={registrarNecessidade}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
@@ -93,7 +131,8 @@ function RegisterNecessidade() {
                     >
                       Descricao
                     </label>
-                    <textarea
+                    <TextArea
+                      name="descricao"
                       rows="4"
                       cols="80"
                       type="text"
@@ -109,33 +148,17 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      CEP
-                    </label>
-                    <input
-                      type="text"
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="CEP"
-                      value={cep}
-							      	onChange={(e) => setCep(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
                       Cidade
                     </label>
-                    <input
+                    <Input 
+                      name="cidade"
                       type="text"
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150 form-control cep-mask"
                       placeholder="Cidade"
                       value={cidade}
-							      	onChange={(e) => setCidade(e.target.value)}
+                      onChange={(e) => setCidade(e.target.value)}
                     />
                   </div>
-
 
                   <div className="relative w-full mb-3">
                     <label
@@ -144,7 +167,8 @@ function RegisterNecessidade() {
                     >
                       Bairro
                     </label>
-                    <input
+                    <Input
+                      name="bairro"
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Bairro"
@@ -160,12 +184,33 @@ function RegisterNecessidade() {
                     >
                       Logadouro
                     </label>
-                    <input
+
+                    <Input
+                      name="logadouro"
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Logadouro"
                       value={logadouro}
-							      	onChange={(e) => setLogadouro(e.target.value)}
+                      onChange={(e) => setLogadouro(e.target.value)
+                      }  
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      CEP
+                    </label>
+
+                    <Input
+                      name="cep"
+                      type="text"
+                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="CEP"
+                      value={cep}
+							      	onChange={(e) => setCep(e.target.value)}
                     />
                   </div>
 
@@ -176,10 +221,13 @@ function RegisterNecessidade() {
                     >
                       DDD
                     </label>
-                    <input
+
+                    <Input
+                      name="ddd"
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="DDD"
+                      maxLength="3"
                       value={ddd}
 							      	onChange={(e) => setDdd(e.target.value)}
                     />
@@ -192,7 +240,9 @@ function RegisterNecessidade() {
                     >
                       Numero
                     </label>
-                    <input
+
+                    <Input
+                      name="numero"
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Numero"
@@ -209,7 +259,8 @@ function RegisterNecessidade() {
                       Finalizar
                     </button>
                   </div>
-                </form>
+                
+              </Form>  
               </div>
             </div>
           </div>
