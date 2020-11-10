@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState, useRef} from 'react';
+
+import { Form }      from '@unform/web'
 import { useHistory} from 'react-router-dom';
-import swal from 'sweetalert'
+
+import Input    from '../../components/Form/Input'
+import swal     from 'sweetalert'
 
 import api from '../../services/api';
 
-function RegisterOng() {
+function RegisterOng(data) {
 
+  const formRef = useRef(null)
   const[nome,   setNome]    = useState('');
   const[email,  setEmail]   = useState('');
   const[senha,  setSenha]   = useState('');
   const[cpf,    setCpf]     = useState('');
 
+  
   const history = useHistory();
 
-  async function registrarUsuarioOng(e) {
-    e.preventDefault();
-    //console.log(e)
+  useEffect(() => {}, []);
 
+  async function registrarUsuarioOng() {
+    //console.log(e)
     const data = {
       nome,
       email,
@@ -24,18 +30,43 @@ function RegisterOng() {
       senha,
     };
 
-    try {
-      //const resposta = await api.post('usuario/usuario-ong', data);
 
-      const resposta = await api.post('usuario/usuario-ong', data);
+    /*
+    if(
+      data.nome   == "" || 
+      data.email  == "" || 
+      data.cpf    == "" || 
+      data.senha  == ""
+    ) {
+      //alert('campos obrigatórios não informados')
+
+    formRef.current.setErrors({
+      nomea:   'NOME  - campo obrigatório',
+      emaila:  'EMAIL - campo obrigatório',
+      cpfa:    'CPF   - campo obrigatório',
+      senhaa:  'SENHA - campo obrigatório',
+      });
+    }
+*/
+    try {
+    const resposta = await api.post('usuario/usuario-ong', data);
+    if(resposta.data.email){
       swal({
         title: "Usuário Criado com Sucesso!",
         text: `Email de Acesso: ${resposta.data.email}`,
         icon: "success",
         button: "Logar!",
       }); 
-       
+
       await history.push('/auth/ong')
+    } else {
+      formRef.current.setErrors({
+        nomea:   'NOME  - campo obrigatório',
+        emaila:  'EMAIL - campo obrigatório',
+        cpfa:    'CPF   - campo obrigatório',
+        senhaa:  'SENHA - campo obrigatório',
+        });
+    }
 
     } catch(err){
       swal({
@@ -46,6 +77,7 @@ function RegisterOng() {
       });
     }
   }
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -59,11 +91,12 @@ function RegisterOng() {
                   </h6>
                 </div>
   
-              <hr className="mt-6 border-b-1 border-gray-400" />
+                <hr className="mt-6 border-b-1 border-gray-400" />
               </div>
+
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
- 
-                <form onSubmit={registrarUsuarioOng}>
+                <Form ref={formRef} onSubmit={registrarUsuarioOng}>
+
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
@@ -71,7 +104,9 @@ function RegisterOng() {
                     >
                       Nome
                     </label>
-                    <input
+
+                    <Input 
+                      name="nomea"
                       type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Nome"
@@ -87,7 +122,9 @@ function RegisterOng() {
                     >
                       Email
                     </label>
-                    <input
+
+                    <Input 
+                      name="emaila"
                       type="email"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Email"
@@ -103,7 +140,9 @@ function RegisterOng() {
                     >
                       Cpf
                     </label>
-                    <input
+
+                    <Input 
+                      name="cpfa"
                       type="number"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="CPF"
@@ -119,7 +158,9 @@ function RegisterOng() {
                     >
                       Senha
                     </label>
-                    <input
+
+                    <Input 
+                      name="senhaa"
                       type="password"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Senha"
@@ -136,7 +177,9 @@ function RegisterOng() {
                       Criar Conta
                     </button>
                   </div>
-                </form>
+
+                </Form>
+
               </div>
             </div>
           </div>
