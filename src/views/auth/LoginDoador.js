@@ -3,16 +3,30 @@ import { Link, useHistory } from "react-router-dom";
 import swal from 'sweetalert'
 import api from '../../services/api';
 
-function LoginOng() {
+function LoginDoador() {
 
   const [email, setEmail] = useState('');
   const [senha_usuario, setPassword] = useState('');
 
   const history = useHistory(); 
 
-  async function handleLogin(e){
+  async function loginDoador(e){
     e.preventDefault();
-    try{
+
+    const data = {
+      email,
+      senha_usuario,
+    };
+    if(data.email == "" ||  data.senha_usuario == ""){
+      swal({
+        title: "campos obrigatórios não preenchidos !",
+        text: " Preencha todos os campos para logar" ,
+        icon: "warning",
+        button: "Tentar Novamente !",
+      });
+    } else {
+
+      try{
       const resposta = await api.post('autenticacao/authDoador', {email, senha_usuario} );
       
       console.log(resposta.data.usuario.nome);
@@ -31,13 +45,14 @@ function LoginOng() {
       
       await history.push('/')
       
-    } catch (err) {
-      swal({
-        title: "Algo deu errado !",
-        text: " Verifique Suas Credenciais !",
-        icon: "warning",
-        button: "Tentar Novamente !",
-      });
+      } catch (err) {
+        swal({
+          title: "Algo deu errado !",
+          text: " Verifique Suas Credenciais !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+        });
+      }
     }
   }
 
@@ -57,7 +72,7 @@ function LoginOng() {
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
    
-              <form onSubmit={handleLogin}>
+              <form onSubmit={loginDoador}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"             
@@ -126,4 +141,4 @@ function LoginOng() {
       </div>
   );
 }
-export default LoginOng;
+export default LoginDoador;

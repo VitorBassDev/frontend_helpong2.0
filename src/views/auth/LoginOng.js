@@ -10,7 +10,7 @@ function LoginOng() {
 
   const history = useHistory(); 
 
-  async function handleLogin(e){
+  async function loginOng(e){
     e.preventDefault();
 
     const data = {
@@ -72,7 +72,7 @@ function LoginOng() {
               </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
    
-              <form onSubmit={handleLogin}>
+              <form onSubmit={loginOng}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"             
