@@ -12,32 +12,47 @@ function LoginOng() {
 
   async function handleLogin(e){
     e.preventDefault();
-    try{
-      const resposta = await api.post('autenticacao/authOng', {email, senha_usuario} );
-      
-      console.log(resposta.data.usuario.nome);
+
+    const data = {
+      email,
+      senha_usuario,
+    };
+    if(data.email == "" ||  data.senha_usuario == ""){
       swal({
-        title: "Perfil Verificado!",
-        text: "Usuário logado com Sucesso!",
-        icon: "success",
-        button: "Ok!",
-      });      
-      //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
-      localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
-      localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
-      localStorage.setItem('ongEmail',  resposta.data.usuario.email);      
-      localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
-      localStorage.setItem('ongToken',  resposta.data.token);        
-      
-      await history.push('/admin')
-      
-    } catch (err) {
-      swal({
-        title: "Algo deu errado !",
-        text: " Verifique Suas Credenciais !",
+        title: "campos obrigatórios não preenchidos !",
+        text: " Preencha todos os campos para logar" ,
         icon: "warning",
         button: "Tentar Novamente !",
       });
+    } else {
+
+      try{
+        const resposta = await api.post('autenticacao/authOng', data );
+        
+        console.log(resposta.data.usuario.nome);
+        swal({
+          title: "Perfil Verificado!",
+          text: "Usuário logado com Sucesso!",
+          icon: "success",
+          button: "Ok!",
+        });      
+        //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
+        localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
+        localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
+        localStorage.setItem('ongEmail',  resposta.data.usuario.email);      
+        localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
+        localStorage.setItem('ongToken',  resposta.data.token);        
+        
+        await history.push('/admin')
+        
+      } catch (err) {
+        swal({
+          title: "Algo deu errado !",
+          text: " Verifique Suas Credenciais !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+        });
+      }
     }
   }
 
