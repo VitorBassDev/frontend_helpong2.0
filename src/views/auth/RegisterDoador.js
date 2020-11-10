@@ -24,27 +24,34 @@ function RegisterDoador() {
       senha,
     };
 
-    try {
-      //const resposta = await api.post('usuario/usuario-ong', data);
-
-      const resposta = await api.post('usuario/usuario-doador', data);
+    if(data.nome == "" || data.email == "", data.cpf == "", data.senha == ""){
       swal({
-        title: "Usuário Criado com Sucesso!",
-        text: `NUMERO IDENTIFICADOR: ${resposta.data.identificador}`,
-        icon: "success",
-        button: "Logar!",
-      }); 
-       
-      await history.push('/auth/doador')
-
-    } catch(err){
-      swal({
-        title: "Algo deu errado !",
-        text: " Verifique Suas Credenciais !",
+        title: "campos obrigatórios não preenchidos !",
         icon: "warning",
         button: "Tentar Novamente !",
       });
-    }
+    } else {
+        try {
+        
+          const resposta = await api.post('usuario/usuario-doador', data);
+          swal({
+            title: "Usuário Criado com Sucesso!",
+            text: `NUMERO IDENTIFICADOR: ${resposta.data.identificador}`,
+            icon: "success",
+            button: "Logar!",
+          }); 
+          
+          await history.push('/auth/doador')
+
+        } catch(err){
+          swal({
+            title: "Algo deu errado !",
+            text: " Verifique Suas Credenciais !",
+            icon: "warning",
+            button: "Tentar Novamente !",
+          });
+        }
+    } 
   }
   return (
     <>
@@ -73,6 +80,7 @@ function RegisterDoador() {
                     </label>
                     <input
                       type="text"
+                      require
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Nome"
                       value={nome}
@@ -89,6 +97,7 @@ function RegisterDoador() {
                     </label>
                     <input
                       type="email"
+                      require
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Email"
                       value={email}
@@ -105,6 +114,7 @@ function RegisterDoador() {
                     </label>
                     <input
                       type="number"
+                      require
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="CPF"
                       value={cpf}
@@ -121,6 +131,7 @@ function RegisterDoador() {
                     </label>
                     <input
                       type="password"
+                      require
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Senha"
                       value={senha}

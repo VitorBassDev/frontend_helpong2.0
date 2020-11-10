@@ -30,26 +30,10 @@ function RegisterOng(data) {
       senha,
     };
 
-
-    /*
-    if(
-      data.nome   == "" || 
-      data.email  == "" || 
-      data.cpf    == "" || 
-      data.senha  == ""
-    ) {
-      //alert('campos obrigatórios não informados')
-
-    formRef.current.setErrors({
-      nomea:   'NOME  - campo obrigatório',
-      emaila:  'EMAIL - campo obrigatório',
-      cpfa:    'CPF   - campo obrigatório',
-      senhaa:  'SENHA - campo obrigatório',
-      });
-    }
-*/
     try {
+      
     const resposta = await api.post('usuario/usuario-ong', data);
+
     if(resposta.data.email){
       swal({
         title: "Usuário Criado com Sucesso!",
