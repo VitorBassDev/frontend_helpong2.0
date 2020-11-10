@@ -23,29 +23,36 @@ function RegisterAdministrador() {
       cpf,
       senha,
     };
-
-    try {
-      //const resposta = await api.post('usuario/usuario-ong', data);
-
-      const resposta = await api.post('usuario/usuario-administrador', data);
+    if(data.nome == "" || data.email == "", data.cpf == "", data.senha == ""){
       swal({
-        title: "Usuário Criado com Sucesso!",
-        text: `NUMERO IDENTIFICADOR: ${resposta.data.identificador}`,
-        icon: "success",
-        button: "Logar!",
-      }); 
-       
-      
-
-    } catch(err){
-      swal({
-        title: "Algo deu errado !",
-        text: " Verifique Suas Credenciais !",
+        title: "campos obrigatórios não preenchidos !",
         icon: "warning",
         button: "Tentar Novamente !",
       });
+    } else {
+      try {
+        //const resposta = await api.post('usuario/usuario-ong', data);
+
+        const resposta = await api.post('usuario/usuario-administrador', data);
+        swal({
+          title: "Usuário Criado com Sucesso!",
+          text: `NUMERO IDENTIFICADOR: ${resposta.data.identificador}`,
+          icon: "success",
+          button: "Logar!",
+        }); 
+        
+        
+
+      } catch(err){
+        swal({
+          title: "Algo deu errado !",
+          text: " Verifique Suas Credenciais !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+        });
+      }
+      await history.push('/auth/administrador')
     }
-    await history.push('/auth/administrador')
   }
   return (
     <>
