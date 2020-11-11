@@ -28,7 +28,7 @@ function EditNecessidade() {
 			});
 			if(ongId){
 				swal({
-					title: "Perfil Alterado com sucesso ! ",
+					title: "Descrição Alterada com sucesso ! ",
 					icon: "success",
 					button: "Ok!",
 				});

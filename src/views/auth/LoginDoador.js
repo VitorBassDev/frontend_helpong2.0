@@ -127,7 +127,10 @@ function LoginDoador() {
                   onClick={(e) => e.preventDefault()}
                   className="text-gray-300"
                 >
-                  <small>Esquici Minha Senha</small>
+                  <small>
+                    Campos Obrigatórios
+                    <h1>  * </h1>
+                  </small>
                 </a>
               </div>
               <div className="w-1/2 text-right">

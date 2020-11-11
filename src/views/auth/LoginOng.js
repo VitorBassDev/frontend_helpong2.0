@@ -85,8 +85,8 @@ function LoginOng() {
                       type="email"
                       name="email"
                       label="Email"
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Email"
+                      className="px-3 py-3  text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="@dominio"
                       value={email}
                       onChange={(e) =>  setEmail(e.target.value) }
                       

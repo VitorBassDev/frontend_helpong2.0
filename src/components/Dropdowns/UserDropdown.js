@@ -24,7 +24,7 @@ function UserDropdown(e) {
   };
 
   
-  function handleLogout(){
+  function sair(){
 
     try {
 
@@ -67,7 +67,7 @@ function UserDropdown(e) {
       >
         <div className="items-center flex">
           <span className="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full">
-            <button onClick={handleLogout} type="button">
+            <button onClick={sair} type="button">
               <FiPower size={18} color="#e02041" />
             </button>
           </span>

@@ -6,7 +6,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import HeaderStats from "components/Headers/HeaderStats.js";
-import FooterAdmin from "components/Footers/FooterAdmin.js";
 
 // views
 
@@ -35,7 +34,7 @@ export default function Admin() {
             <Route path="/admin/AlterarNecessidade" exact component={AlterarNecessidade} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
-          <FooterAdmin />
+ 
         </div>
       </div>
     </>

@@ -19,7 +19,7 @@ export default function Navbar() {
             
             <div className="w-full lg:w-6/12 px-4 mt-5 ml-auto mr-auto text-center">
               <div className="pr-12">
-                <h1 className="text-white font-semibold text-4xl uppercase">
+                <h1 className="text-white font-semibold text-lg uppercase">
                   {ongName}
                 </h1>
               </div>

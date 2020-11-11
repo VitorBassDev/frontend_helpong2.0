@@ -15,13 +15,13 @@ export default function Navbar(props) {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
               to="/"
-              className="text-gray-800 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
+              className="text-gray-800 text-lg font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
             >
               Help a Ong
             </Link>
             <Link 
             to="admin">
-              <span className="text-gray-800 font-bold text-lg uppercase">{ongName}</span>
+              <span className="text-gray-800 font-bold text-sm uppercase">{ongName}</span>
               
             </Link>
 

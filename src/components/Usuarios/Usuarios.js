@@ -78,8 +78,8 @@ async function EditarNecessidade(id_necessidade){
         Authorization: ongId,
       }
     },
-    history.push('/adminFull/dashboard'),
-    alert('Cheguei Aqui')
+    history.push('/adminFull/AlterarUsuario'),
+    alert('Cheguei Aqui sss')
     
     );
 
@@ -224,7 +224,7 @@ async function EditarNecessidade(id_necessidade){
                   
                   {/** EDITAR */}
                   <button onClick={()=> EditarNecessidade(incident.id_usuario)} type="submit">
-                    <Link to="/admin/AlterarNecessidade">
+                    <Link to="/adminFull/AlterarUsuario">
                     <i class="px-4 fas fa-edit"></i>
                     </Link>
                   </button>

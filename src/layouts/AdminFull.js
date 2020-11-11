@@ -14,7 +14,7 @@ import Dashboard from "views/adminFull/DashboardAdmin.js";
 import Settings from "views/adminFull/Settings.js";
 import Tables from "views/adminFull/TablesNecessidade.js";
 //import Necessidade from "views/adminFull/RegistraNecessidade.js";
-import AlterarNecessidade from "views/adminFull/EditaNecessidade.js";
+import AlterarUsuario from "views/adminFull/EditaUsuario.js";
 
 export default function Admin() {
   return (
@@ -32,7 +32,7 @@ export default function Admin() {
             <Route path="/adminFull/settings" exact component={Settings} />
             <Route path="/adminFull/tables" exact component={Tables} />
 
-            <Route path="/admin/AlterarNecessidade" exact component={AlterarNecessidade} />
+            <Route path="/adminFull/AlterarUsuario" exact component={AlterarUsuario} />
             <Redirect from="/adminFull" to="/adminFull/dashboard" />
           </Switch>
      

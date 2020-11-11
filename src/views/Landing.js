@@ -7,21 +7,6 @@ import ListaNecessidadePaginaInicial from "components/Necessidades/ListaPaginaIn
 
 export default function Landing() {
 
-  const [resumo, setResumo] = useState([]);
-
-  const ongId   = localStorage.getItem('ongId');
-
-  useEffect(() => {
-    api.get('necessidade/totalAtendida', {
-    headers: {
-      Authorization: ongId,
-    }
-    }).then(response =>{
-      setResumo(response.data);
-    })
- 
-  }, [ongId]);
-  
   return (
     <>
      
@@ -32,10 +17,7 @@ export default function Landing() {
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')",
-            }}
+          
           >
             <span
               id="blackOverlay"
@@ -44,22 +26,15 @@ export default function Landing() {
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-6/12 mt-12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl">
+                  <h1 className="text-blue font-semibold text-5xl">
                       Seja um Doador
 
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
                    Escolha uma necessidade para ajudar, ou Cadastre-se para receber doações.
                   </p>
-                  {resumo.map(incident =>(
-                  <p className="mt-4 text-lg text-gray-300" 
-                  key={resumo.resumo}
-                  >
-                  Ja Somamos mais de {incident.data} Doações
-                  </p>
-                  ))}
                 </div>
               </div>
             </div>

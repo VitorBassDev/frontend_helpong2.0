@@ -6,7 +6,10 @@ import api from '../../services/api';
 
 function EditNecessidade() {
   
-  const[descricao,	setDescricao]   = useState('');
+ 
+  const[nome,   setNome]    = useState('');
+  const[email,  setEmail]   = useState('');
+  const[cpf,    setCpf]     = useState('');
   
   const ongId   = localStorage.getItem('ongId');
   
@@ -16,12 +19,13 @@ function EditNecessidade() {
 		e.preventDefault();
 		console.log(e)
 
-		const data = {
-			descricao
-		};
-
+    const data = {
+      nome,
+      email,
+      cpf,
+    };
 		try {
-			await api.put(`necessidade/alterar/`, data, {
+			await api.patch(`usuario/usuarioEditarTestNovo/`, data, {
 				headers:{
 					Authorization: ongId,
 				}
@@ -60,7 +64,7 @@ function EditNecessidade() {
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-gray-600 text-lg font-bold">
-                    Editar Necessidade
+                    Editar Usuário
                   </h6>
                 </div>
   
@@ -76,21 +80,46 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Descricao
+                      Nome
                     </label>
-                    <textarea
-                      rows="4"
-                      cols="80"
+                    <input
                       type="text"
                       className="px-3 py-3 placeholder-gray-500 text-gray-900 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Descrição"
-                      onChange={(e) => { setDescricao(e.target.value) }}
+                      value={nome}
+                      onChange={ e => setNome (e.target.value)}
                       
                     />
-                   
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="px-3 py-3 placeholder-gray-500 text-gray-900 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="Descrição"
+                      value={email}
+                      onChange={ e => setEmail (e.target.value)}
+                      
+                    />
+                    <label
+                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      CPF
+                    </label>
+                    <input
+                      type="text"
+                      className="px-3 py-3 placeholder-gray-500 text-gray-900 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                      placeholder="Descrição"
+                      value={cpf}
+                      onChange={ e => setCpf (e.target.value)}
+                      
+                    />                   
                   </div>
-
-               
+              
                   <div className="text-center mt-6">
                     <button
                       
