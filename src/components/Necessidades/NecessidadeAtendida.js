@@ -125,9 +125,7 @@ function NecessidadesOng({ color }) {
           Authorization: ongId,
         }
       },
-      history.push('/admin/dashboard'),
-      alert('Cheguei Aqui')
-      
+
       );
 
         setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));

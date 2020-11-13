@@ -20,35 +20,43 @@ function EditNecessidade() {
 			descricao
 		};
 
-		try {
-			await api.put(`necessidade/alterar/`, data, {
-				headers:{
-					Authorization: ongId,
-				}
-			});
-			if(ongId){
-				swal({
-					title: "Descrição Alterada com sucesso ! ",
-					icon: "success",
-					button: "Ok!",
-				});
-				history.push('/admin/dashboard');
-			} else {
-				swal({
-					title: "Erro na atualização ",
-					icon: "error",
-					button: "Logar",
-				});
-				history.push('/admin/dashboard');
-			}
-
-		} catch(err){
-			swal({
-        title: "Algo deu errado !",
+    if(data.descricao == ""){
+      swal({
+        title: "campos obrigatórios não preenchidos !",
         icon: "warning",
         button: "Tentar Novamente !",
       });
-		}
+    } else {
+      try {
+        await api.put(`necessidade/alterar/`, data, {
+          headers:{
+            Authorization: ongId,
+          }
+        });
+        if(ongId){
+          swal({
+            title: "Descrição Alterada com sucesso ! ",
+            icon: "success",
+            button: "Ok!",
+          });
+          history.push('/admin/dashboard');
+        } else {
+          swal({
+            title: "Erro na atualização ",
+            icon: "error",
+            button: "Logar",
+          });
+          history.push('/admin/dashboard');
+        }
+
+      } catch(err){
+        swal({
+          title: "Algo deu errado !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+        });
+      }
+    }
   }
 
   return (

@@ -124,8 +124,7 @@ async function EditarNecessidade(id_necessidade){
         Authorization: ongId,
       }
     },
-  
-    alert('Cheguei Aqui')
+
     );
 
       setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
