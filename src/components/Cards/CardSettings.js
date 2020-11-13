@@ -47,7 +47,7 @@ function CardSettings() {
       });
 
       localStorage.clear();
-      history.push('/');
+      await history.push('/auth/ong')
     }
   
   

@@ -40,16 +40,6 @@ function RegisterNecessidade() {
       numero
     };
 
-    formRef.current.setErrors({
-      cidade:       ' CIDADE   - campo obrigatório',
-      descricao:    'DESCRIÇÃO - campo obrigatório',
-      cep:          'CEP       - campo obrigatório',
-      bairro:       'BAIRRO    - campo obrigatório',
-      logadouro:    'LOGADOURO - campo obrigatório',
-      ddd:          'DDD       - campo obrigatório',
-      numero:       'NUMERO    - campo obrigatório',
-
-    })
   
 		try {
 			const resposta = await api.post('necessidade/registraNecessidade', data, {
@@ -74,6 +64,16 @@ function RegisterNecessidade() {
 				
         });
         */
+       formRef.current.setErrors({
+        cidade:       ' CIDADE   - campo obrigatório',
+        descricao:    'DESCRIÇÃO - campo obrigatório',
+        cep:          'CEP       - campo obrigatório',
+        bairro:       'BAIRRO    - campo obrigatório',
+        logadouro:    'LOGADOURO - campo obrigatório',
+        ddd:          'DDD       - campo obrigatório',
+        numero:       'NUMERO    - campo obrigatório',
+  
+      })
 				history.push('/admin/necessidade');
       }
 

@@ -79,7 +79,7 @@ function LoginOng() {
                       placeholder="Email" 
 
                     >
-                      EMAIL
+                      * EMAIL
                     </label>
                     <input
                       type="email"
@@ -98,7 +98,7 @@ function LoginOng() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      SENHA
+                      * SENHA
                     </label>
                     <input
                       type="password"
@@ -127,13 +127,8 @@ function LoginOng() {
                   onClick={(e) => e.preventDefault()}
                   className="text-gray-300"
                 >
-                  <small>Esquici Minha Senha</small>
+                  <small>* Campos obrigatórios</small>
                 </a>
-              </div>
-              <div className="w-1/2 text-right">
-                <Link to="/auth/register" className="text-gray-300">
-                  <small>Criar Conta</small>
-                </Link>
               </div>
             </div>
           </div>

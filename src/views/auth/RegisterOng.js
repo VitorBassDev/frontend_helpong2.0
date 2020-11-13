@@ -86,7 +86,7 @@ function RegisterOng(data) {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Nome
+                      * Nome
                     </label>
 
                     <Input 
@@ -104,7 +104,7 @@ function RegisterOng(data) {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Email
+                      * Email
                     </label>
 
                     <Input 
@@ -122,7 +122,7 @@ function RegisterOng(data) {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Cpf
+                      * Cpf
                     </label>
 
                     <Input 
@@ -140,7 +140,7 @@ function RegisterOng(data) {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Senha
+                      * Senha
                     </label>
 
                     <Input 
