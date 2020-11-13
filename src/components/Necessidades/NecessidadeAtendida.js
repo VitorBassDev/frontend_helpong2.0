@@ -28,8 +28,7 @@ function NecessidadesOng({ color }) {
 
     try{
       swal({
-        title: "Tem que deseja excluir?",
-        text: " Clique em OK",
+        title: "Realmente deseja excluir essa necessidade ?",
         icon: "warning",
         buttons: true,
         dangerMode: true,
