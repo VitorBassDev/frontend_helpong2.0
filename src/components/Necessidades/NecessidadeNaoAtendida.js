@@ -61,7 +61,7 @@ function NecessidadesOng({ color }) {
 
     swal({
       title: "Algo deu errado !",
-      text: " Tente excluír novamente !",
+      text: " Tente novamente !",
       icon: "warning",
       button: "Tentar Novamente !",
     
@@ -73,8 +73,7 @@ function NecessidadesOng({ color }) {
 
     try{
       swal({
-        title: "Informar que a necessidade já foi atendida",
-        text: " Clique em OK",
+        title: "Deseja Informar que a necessidade já foi atendida ?",
         icon: "sucess",
         buttons: true,
         dangerMode: true,
@@ -108,7 +107,7 @@ function NecessidadesOng({ color }) {
 
     swal({
       title: "Algo deu errado !",
-      text: " Tente excluír novamente !",
+      text: " Tente novamente !",
       icon: "warning",
       button: "Tentar Novamente !",
     
@@ -128,10 +127,7 @@ async function EditarNecessidade(id_necessidade){
 
       setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
     } catch (err){
-      alert('Deu Erro aqui');
     }
-
-
 }
 
   return (      

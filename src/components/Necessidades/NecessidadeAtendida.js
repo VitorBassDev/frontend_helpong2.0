@@ -28,8 +28,8 @@ function NecessidadesOng({ color }) {
 
     try{
       swal({
-        title: "Realmente deseja excluir essa necessidade ?",
-        icon: "warning",
+        title: "Deseja Informar que a necessidade já foi atendida ?",
+        icon: "sucess",
         buttons: true,
         dangerMode: true,
       })
@@ -62,7 +62,7 @@ function NecessidadesOng({ color }) {
 
     swal({
       title: "Algo deu errado !",
-      text: " Tente excluír novamente !",
+      text: " Tente novamente !",
       icon: "warning",
       button: "Tentar Novamente !",
     
@@ -109,7 +109,7 @@ function NecessidadesOng({ color }) {
 
     swal({
       title: "Algo deu errado !",
-      text: " Tente excluír novamente !",
+      text: " Tente novamente !",
       icon: "warning",
       button: "Tentar Novamente !",
     
