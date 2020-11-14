@@ -24,35 +24,44 @@ function EditNecessidade() {
       email,
       cpf,
     };
-		try {
-			await api.patch(`usuario/usuarioEditarTestNovo/`, data, {
-				headers:{
-					Authorization: ongId,
-				}
-			});
-			if(ongId){
-				swal({
-					title: "Perfil Alterado com sucesso ! ",
-					icon: "success",
-					button: "Ok!",
-				});
-				history.push('/admin/dashboard');
-			} else {
-				swal({
-					title: "Erro na atualização ",
-					icon: "error",
-					button: "Logar",
-				});
-				history.push('/admin/dashboard');
-			}
-
-		} catch(err){
-			swal({
-        title: "Algo deu errado !",
+    
+    if(data.descricao == "" || data.email == "", data.cpf == "" ){
+      swal({
+        title: "campos obrigatórios não preenchidos !",
         icon: "warning",
         button: "Tentar Novamente !",
       });
-		}
+    } else {
+      try {
+        await api.patch(`usuario/usuarioEditarTest/`, data, {
+          headers:{
+            Authorization: ongId,
+          }
+        });
+        if(ongId){
+          swal({
+            title: "Usuário Alterado com sucessos ! ",
+            icon: "success",
+            button: "Ok!",
+          });
+          history.push('/adminFull/dashboard');
+        } else {
+          swal({
+            title: "Erro na atualização ",
+            text: "Tentar Novamente",
+            icon: "error",
+            button: "Logar",
+          });
+          history.push('/adminFull/dashboard');
+        }
+      } catch(err){
+        swal({
+          title: "Algo deu errado !",
+          icon: "warning",
+          button: "Tentar Novamente !",
+        });
+      }
+    }
   }
 
   return (
@@ -80,7 +89,7 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Nome
+                     * Nome
                     </label>
                     <input
                       type="text"
@@ -94,7 +103,7 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Email
+                     * Email
                     </label>
                     <input
                       type="email"
@@ -108,7 +117,7 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      CPF
+                    * CPF
                     </label>
                     <input
                       type="text"

@@ -42,15 +42,15 @@ function RegisterOng(data) {
         button: "Logar!",
       }); 
 
-      await history.push('/auth/ong')
-    } else {
-      formRef.current.setErrors({
-        nomea:   'NOME  - campo obrigatório',
-        emaila:  'EMAIL - campo obrigatório',
-        cpfa:    'CPF   - campo obrigatório',
-        senhaa:  'SENHA - campo obrigatório',
-        });
-    }
+         await history.push('/auth/ong')
+      } else {
+        formRef.current.setErrors({
+          nomea:   'NOME  - campo obrigatório',
+          emaila:  'EMAIL - campo obrigatório',
+          cpfa:    'CPF   - campo obrigatório',
+          senhaa:  'SENHA - campo obrigatório',
+          });
+      }
 
     } catch(err){
       swal({
@@ -127,7 +127,7 @@ function RegisterOng(data) {
 
                     <Input 
                       name="cpfa"
-                      type="number"
+                      type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="CPF"
                       value={cpf}

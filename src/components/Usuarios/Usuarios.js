@@ -28,7 +28,7 @@ function NecessidadesOng({ color }) {
     try{
 
       swal({
-        title: "Tem que deseja excluir este usuário?",
+        title: "Realmente deseja excluir este usuário?",
         text: " Clique em OK",
         icon: "warning",
         buttons: true,
@@ -79,8 +79,7 @@ async function EditarNecessidade(id_necessidade){
       }
     },
     history.push('/adminFull/AlterarUsuario'),
-    alert('Cheguei Aqui sss')
-    
+        
     );
 
       setNecessidade(necessidade.filter(incident => incident.id_necessidade!==id_necessidade ));
