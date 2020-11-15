@@ -38,11 +38,8 @@ function RegisterAdministrador() {
           title: "Usuário Criado com Sucesso!",
           text: `NUMERO IDENTIFICADOR: ${resposta.data.identificador}`,
           icon: "success",
-          button: "Logar!",
+          button: "Ok!",
         }); 
-        
-        
-
       } catch(err){
         swal({
           title: "Algo deu errado !",
@@ -51,7 +48,7 @@ function RegisterAdministrador() {
           button: "Tentar Novamente !",
         });
       }
-      await history.push('/auth/administrador')
+      await history.push('/adminFull/dashboard')
     }
   }
   return (
