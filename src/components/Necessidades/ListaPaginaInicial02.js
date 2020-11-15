@@ -61,7 +61,7 @@ export default function Profile() {
                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
                         {necessidade.identificador}
                         </span>
-                        <span className="text-md  font-bold text-gray-700">Código de Rasterio</span>
+                        <span className="text-md  font-bold text-gray-700">Código Identificador</span>
                       </div>
                     </div>
                   </div>
@@ -72,7 +72,7 @@ export default function Profile() {
                   {necessidade.nome}
                   </h3>
                   <div className="text-2xl font-semibold mb-2 text-gray-700 mt-5">
-                    <i className="fas fa-briefcase text-lg text-gray-700 "></i>
+                  <i className="fas fa-map-marker-alt text-xl text-gray-700 "></i>
                     <spam className="mr-2 "> {necessidade.cidade} </spam>
                    
                   </div>

@@ -67,20 +67,38 @@ function Doacao() {
               <div className="flex flex-wrap justify-center">
                 <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                   <div className="flex justify-right py-4 lg:pt-4 pt-8">
-                    
+                  <i className="fas fa-phone-alt text-lg text-gray-700 "></i> <br/>
                     <div className="mr-5 p-3 text-center">
                       <span className="text-xl font-bold block  tracking-wide text-gray-700">
-                      {doacao.ddd}
+                      ({doacao.ddd})
                       </span>
                       <span className="text-sm text-gray-700">DDD</span>
                     </div>
-                    
+                                        
                     <div className="mr-4 p-3 text-center">
                       <span className="text-xl font-bold block  tracking-wide text-gray-700">
                       {doacao.numero}
                       </span>
                       <span className="text-sm text-gray-700">Telefone</span>
                     </div>
+                    |
+                    |
+                    |
+                    |
+                    
+                    <div className="mr-5 p-3 text-center">
+                      
+                      <span className="text-xl font-bold block  tracking-wide text-gray-700">
+                      <i className="fas fa-barcode text-lg text-gray-700 "></i> <br/>
+                      {doacao.identificador}
+                      </span>
+                      <span className="text-sm text-gray-700">Identificador</span>
+                        
+                    </div>
+                    |
+                    |
+                    |
+                    |
                   </div>
                 </div>
               </div>
@@ -90,7 +108,7 @@ function Doacao() {
                  {doacao.nome}
                 </h3>
                 <div className="text-2xl font-semibold mb-2 text-gray-700 mt-5">
-                  <i className="fas fa-briefcase text-sm text-gray-700 "></i>
+                  <i className="fas fa-map-marker-alt text-xl text-gray-700 "></i>
                   <spam className="mr-4 "> {doacao.cidade} - 
                   </spam>
                     {doacao.bairro} {doacao.logadouro} -
