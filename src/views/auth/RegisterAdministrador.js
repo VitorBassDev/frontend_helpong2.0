@@ -77,7 +77,7 @@ function RegisterAdministrador() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Nome
+                    * Nome
                     </label>
                     <input
                       type="text"
@@ -93,7 +93,7 @@ function RegisterAdministrador() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Email
+                    * Email
                     </label>
                     <input
                       type="email"
@@ -109,10 +109,10 @@ function RegisterAdministrador() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Cpf
+                    * Cpf
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="CPF"
                       value={cpf}
@@ -145,6 +145,17 @@ function RegisterAdministrador() {
                     </button>
                   </div>
                 </form>
+              </div>
+            </div>
+            <div className="flex flex-wrap mt-6 relative">
+              <div className="w-1/2">
+                <a
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  className="text-gray-300"
+                >
+                  <small>* Campos obrigatórios</small>
+                </a>
               </div>
             </div>
           </div>
