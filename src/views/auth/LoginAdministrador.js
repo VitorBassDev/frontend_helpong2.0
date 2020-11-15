@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import swal from 'sweetalert'
 import api from '../../services/api';
 
@@ -41,6 +41,7 @@ function LoginAdministrador() {
         localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
         localStorage.setItem('ongEmail',  resposta.data.usuario.email);      
         localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
+        localStorage.setItem('ongPerfil',  resposta.data.usuario.perfil);      
         localStorage.setItem('ongToken',  resposta.data.token);        
         
         await history.push('/adminFull')

@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
-import Footer from "components/Footers/Footer.js";
 
 import './styles.css';
 
@@ -49,7 +48,7 @@ export default function Profile() {
                     <div className="relative">
                       <img
                         alt="..."
-                        src={require("assets/img/team-2-800x800.jpg")}
+                        src={require("assets/img/help01.png")}
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                       />
                     </div>
@@ -91,14 +90,10 @@ export default function Profile() {
                 </div>
               </div>
             </div>
-                
           </div>
         </section>
-    
       </div>
-
       ))}
-  
     </>
   );
 }

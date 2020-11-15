@@ -1,13 +1,25 @@
 /*eslint-disable*/
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 // components
 
 import IndexDropdown from "components/Dropdowns/IndexDropdown02.js";
 
 export default function Navbar(props) {
   const ongName = localStorage.getItem('ongNome')
+  const ongPerfil = localStorage.getItem('ongPerfil')
+  const history = useHistory(); 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  function router(){ 
+  if(ongPerfil == 2){
+    history.push('/adminFull')
+  }else{
+    history.push('/admin')
+  }
+}
+
   return (
     <>
       <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
@@ -19,10 +31,9 @@ export default function Navbar(props) {
             >
               Help a Ong
             </Link>
-            <Link 
-            to="admin">
-              <span className="text-gray-800 font-bold text-sm uppercase">{ongName}</span>
-              
+            <Link onClick={router}>       
+
+              <span className="text-gray-800 font-bold text-sm uppercase">{ongName}</span>              
             </Link>
 
             <button
