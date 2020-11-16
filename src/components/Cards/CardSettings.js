@@ -5,7 +5,7 @@ import swal from 'sweetalert'
 import api from '../../services/api';
 
 function CardSettings() {
-  
+  const ongPerfil = localStorage.getItem('ongPerfil')
   const ongId   = localStorage.getItem('ongId');
   const ongNome = localStorage.getItem('ongNome')
   const ongEmail = localStorage.getItem('ongEmail')
@@ -46,8 +46,13 @@ function CardSettings() {
         button: "Ok!",
       });
 
+      if(ongPerfil == 2){
+        history.push('/auth/Administrador')
+      }else{
+        history.push('/auth/ong')
+      }
       localStorage.clear();
-      await history.push('/auth/ong')
+
     }
   
   
