@@ -51,7 +51,7 @@ function NecessidadesOng({ color }) {
         } else {
           swal({
             title: "Operação Cancelada",
-            icon: "sucess",
+            icon: "success",
             button: "Ok!",
           });
         }
@@ -74,7 +74,7 @@ function NecessidadesOng({ color }) {
     try{
       swal({
         title: "Deseja Informar que a necessidade já foi atendida ?",
-        icon: "sucess",
+        icon: "warning",
         buttons: true,
         dangerMode: true,
       })
@@ -97,7 +97,7 @@ function NecessidadesOng({ color }) {
         } else {
           swal({
             title: "Operação Cancelada",
-            icon: "sucess",
+            icon: "success",
             button: "Ok!",
           });
         }

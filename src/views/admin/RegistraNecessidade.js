@@ -261,6 +261,17 @@ function RegisterNecessidade() {
               </Form>  
               </div>
             </div>
+            <div className="flex flex-wrap mt-6 relative">
+              <div className="w-1/2">
+                <a
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  className="text-gray-300"
+                >
+                  <small>* Campos obrigatórios</small>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
