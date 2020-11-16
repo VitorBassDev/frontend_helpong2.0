@@ -38,33 +38,24 @@ function RegisterNecessidade() {
       logadouro,
       ddd,
       numero
-    };
-
-  
-		try {
-			const resposta = await api.post('necessidade/registraNecessidade', data, {
-				headers:{
-					Authorization: ongId,
-				}
-			});
-			if(resposta.data.identificador){
-				swal({
-					title: "Necessidade Cadastrada com Sucesso ! ",
-					text: `Código de Rastreio: ${resposta.data.identificador}`,
-					icon: "success",
-					button: "Ok!",
-				});
-				history.push('/admin/dashboard');
-			} else {/*
-				swal({
-          title: "Algo deu errado ok !",
-          text: " Tente novamente !",
-          icon: "warning",
-          button: "Tentar Novamente !",
-				
-        });
-        */
-       formRef.current.setErrors({
+    };     
+    
+    if(
+      data.descricao == "" ||  
+      data.cep       == "" || 
+      data.cidade    == "" || 
+      data.bairro    == "" ||
+      data.logadouro == "" ||
+      data.ddd       == "" ||
+      data.numero    == "" 
+    ) {
+      swal({
+        title: "Campos Obrgatórios não preenchidos ",
+        text: "Preencha todos os campos",
+        icon: "error",
+        button: "Tentar Novamente",
+      });
+      formRef.current.setErrors({
         cidade:       ' CIDADE   - campo obrigatório',
         descricao:    'DESCRIÇÃO - campo obrigatório',
         cep:          'CEP       - campo obrigatório',
@@ -74,38 +65,45 @@ function RegisterNecessidade() {
         numero:       'NUMERO    - campo obrigatório',
   
       })
-				history.push('/admin/necessidade');
-      }
+    }
+    else {
+    
+      try {
+        const resposta = await api.post('necessidade/registraNecessidade', data, {
+          headers:{
+            Authorization: ongId,
+          }
+        });
+        if(resposta.data.identificador){
+          swal({
+            title: "Necessidade Cadastrada com Sucesso ! ",
+            text: `Código de Rastreio: ${resposta.data.identificador}`,
+            icon: "success",
+            button: "Ok!",
+          });
+          history.push('/admin/dashboard');
+        } else {
+          swal({
+            title: "Algo deu errado ok !",
+            text: " Tente novamente !",
+            icon: "warning",
+            button: "Tentar Novamente !",
+          
+          });
+          
+          history.push('/admin/necessidade');
+        }     
 
-      /*
-      if(
-        data.descricao === "" ||  
-        data.cep       == "" || 
-        data.cidade    == "" || 
-        data.bairro    == "" ||
-        data.logadouro == "" ||
-        data.ddd       == "" ||
-        data.numero    == "" 
-      ) {
+      } catch(err){
         swal({
-          title: "Campos Obrgatórios não preenchidos ",
-          text: "Preencha todos os campos",
-          icon: "error",
-          button: "Tentar Novamente",
+          title: "Usuário Não encontrado ",
+            text: "Faça login para registrar sua necessidade",
+            icon: "error",
+            button: "Logar",
         });
       }
-      */
-
-		} catch(err){
-			swal({
-      	title: "Usuário Não encontrado ",
-					text: "Faça login para registrar sua necessidade",
-					icon: "error",
-					button: "Logar",
-      });
-		}
+    }
   }
-    
   return (
     <>
       <div className="container mx-auto px-4 h-full bg-blue-900 ">
@@ -129,7 +127,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Descricao
+                      * Descricao
                     </label>
                     <TextArea
                       name="descricao"
@@ -148,7 +146,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Cidade
+                     * Cidade
                     </label>
                     <Input 
                       name="cidade"
@@ -165,7 +163,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Bairro
+                    * Bairro
                     </label>
                     <Input
                       name="bairro"
@@ -182,7 +180,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Logadouro
+                     * Logadouro
                     </label>
 
                     <Input
@@ -201,7 +199,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      CEP
+                      * CEP
                     </label>
 
                     <Input
@@ -219,7 +217,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      DDD
+                     * DDD
                     </label>
 
                     <Input
@@ -238,7 +236,7 @@ function RegisterNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Numero
+                     * Numero
                     </label>
 
                     <Input

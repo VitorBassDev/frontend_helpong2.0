@@ -34,7 +34,7 @@ function EditNecessidade() {
       });
     } else {*/
       try {
-        await api.patch(`usuario/usuarioEditarTest/`, data, {
+        await api.patch(`usuario/usuarioEditarTestNovo/`, data, {
           headers:{
             Authorization: ongId,
           }
