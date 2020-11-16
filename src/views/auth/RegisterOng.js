@@ -47,7 +47,7 @@ function RegisterOng(data) {
         formRef.current.setErrors({
           nomea:   'NOME  - campo obrigatório',
           emaila:  'EMAIL - campo obrigatório',
-          cpfa:    'CPF   - campo obrigatório',
+          cpfa:    'CPF/CNPJ   - campo obrigatório',
           senhaa:  'SENHA - campo obrigatório',
           });
       }
@@ -122,7 +122,7 @@ function RegisterOng(data) {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      * Cpf
+                      * Cpf/Cnpj
                     </label>
 
                     <Input 

@@ -24,6 +24,7 @@ function EditNecessidade() {
       email,
       cpf,
     };
+    /*
     
     if(data.descricao == "" || data.email == "", data.cpf == "" ){
       swal({
@@ -31,7 +32,7 @@ function EditNecessidade() {
         icon: "warning",
         button: "Tentar Novamente !",
       });
-    } else {
+    } else {*/
       try {
         await api.patch(`usuario/usuarioEditarTest/`, data, {
           headers:{
@@ -61,7 +62,6 @@ function EditNecessidade() {
           button: "Tentar Novamente !",
         });
       }
-    }
   }
 
   return (
@@ -89,12 +89,12 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                     * Nome
+                      Nome
                     </label>
                     <input
                       type="text"
                       className="px-3 py-3 placeholder-gray-500 text-gray-900 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Descrição"
+                      placeholder="nome"
                       value={nome}
                       onChange={ e => setNome (e.target.value)}
                       
@@ -103,12 +103,12 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                     * Email
+                      Email
                     </label>
                     <input
                       type="email"
                       className="px-3 py-3 placeholder-gray-500 text-gray-900 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Descrição"
+                      placeholder="Email"
                       value={email}
                       onChange={ e => setEmail (e.target.value)}
                       
@@ -117,12 +117,12 @@ function EditNecessidade() {
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                    * CPF
+                    CPF/CNPJ
                     </label>
                     <input
                       type="text"
                       className="px-3 py-3 placeholder-gray-500 text-gray-900 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Descrição"
+                      placeholder="CPF/CNPJ"
                       value={cpf}
                       onChange={ e => setCpf (e.target.value)}
                       

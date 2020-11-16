@@ -53,7 +53,7 @@ function NecessidadesOng({ color }) {
         } else {
           swal({
             title: "Operação Cancelada",
-            icon: "sucess",
+            icon: "success",
             button: "Ok!",
           });
         }
